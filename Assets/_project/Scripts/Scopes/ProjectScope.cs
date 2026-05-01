@@ -1,10 +1,14 @@
-using UnityEditor;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-public class ProjectScope : LifetimeScope
+
+namespace _project.Scripts.Scopes
 {
-    protected override void Configure(IContainerBuilder builder)
+    public class ProjectScope : LifetimeScope
     {
+        protected override void Configure(IContainerBuilder builder)
+        {
+            builder.Register<SceneLoaderService>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<GameEntryPoint>();
+        }
     }
 }
