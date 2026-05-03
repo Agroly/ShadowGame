@@ -9,35 +9,24 @@ namespace _project.Scripts.UI.Button
     public class UIButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
         [Header("Settings")]
-        public bool interactable = true;
-        public float holdDelay = 0.5f;
+        [SerializeField] private bool interactable = true;
+        [SerializeField] private float holdDelay = 0.5f;
 
         [Header("Events")]
         public UnityEvent onClick;
         public UnityEvent onHold;
         public UnityEvent onPress;
         public UnityEvent onRelease;
-        
 
         private bool isPressed;
         private bool holdTriggered;
-
-        private CancellationTokenSource cts;
-
-        private void OnEnable()
-        {
-            cts = new CancellationTokenSource();
-        }
+        
+        private CancellationTokenSource holdCts;
 
         private void OnDisable()
         {
-            CancelTasks();
-            ResetState();
-        }
-
-        private void OnDestroy()
-        {
-            CancelTasks();
+            CancelHold();
+            isPressed = false;
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -46,16 +35,16 @@ namespace _project.Scripts.UI.Button
 
             isPressed = true;
             holdTriggered = false;
-
             onPress?.Invoke();
-            HandleHold(cts.Token).Forget();
+            
+            StartHoldDetection();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (!interactable) return;
-
-            if (isPressed && !holdTriggered)
+            if (!isPressed) return;
+            
+            if (!holdTriggered)
             {
                 onClick?.Invoke();
             }
@@ -73,37 +62,40 @@ namespace _project.Scripts.UI.Button
             if (!isPressed) return;
 
             isPressed = false;
+            CancelHold();
             onRelease?.Invoke();
         }
 
-        private async UniTaskVoid HandleHold(CancellationToken token)
+        private void StartHoldDetection()
+        {
+            CancelHold();
+            
+            holdCts = new CancellationTokenSource();
+            HandleHoldAsync(holdCts.Token).Forget();
+        }
+
+        private async UniTaskVoid HandleHoldAsync(CancellationToken token)
         {
             try
             {
-                await UniTask.Delay((int)(holdDelay * 1000), cancellationToken: token);
+                await UniTask.Delay((int)(holdDelay * 1000), delayType: DelayType.UnscaledDeltaTime, cancellationToken: token);
 
-                if (isPressed)
-                {
-                    holdTriggered = true;
-                    onHold?.Invoke();
-                }
+                // Если мы дошли сюда, значит токен не был отменен (кнопку не отпустили)
+                holdTriggered = true;
+                onHold?.Invoke();
             }
-            catch (System.OperationCanceledException) { }
-        }
-
-        private void ResetState()
-        {
-            isPressed = false;
-            holdTriggered = false;
-        }
-
-        private void CancelTasks()
-        {
-            if (cts != null)
+            catch (System.OperationCanceledException)
             {
-                cts.Cancel();
-                cts.Dispose();
-                cts = null;
+            }
+        }
+
+        private void CancelHold()
+        {
+            if (holdCts != null)
+            {
+                holdCts.Cancel();
+                holdCts.Dispose();
+                holdCts = null;
             }
         }
     }

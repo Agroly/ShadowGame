@@ -74,8 +74,7 @@ namespace _project.Scripts.UI.Button
 
                     await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: token);
                 }
-
-                // 👇 гарантируем точное значение в конце
+                
                 transform.localScale = targetScale;
                 image.color = targetColor;
             }
