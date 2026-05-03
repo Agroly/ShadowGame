@@ -6,7 +6,6 @@ namespace _project.Scripts.UI
 {
     public abstract class UIElement : MonoBehaviour
     {
-
         public void Show()
         {
             if (gameObject.activeSelf) return;

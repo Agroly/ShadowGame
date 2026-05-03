@@ -44,10 +44,7 @@ namespace _project.Scripts.UI.Button
         {
             if (!isPressed) return;
             
-            if (!holdTriggered)
-            {
-                onClick?.Invoke();
-            }
+            onClick?.Invoke();
 
             Release();
         }
@@ -79,8 +76,7 @@ namespace _project.Scripts.UI.Button
             try
             {
                 await UniTask.Delay((int)(holdDelay * 1000), delayType: DelayType.UnscaledDeltaTime, cancellationToken: token);
-
-                // Если мы дошли сюда, значит токен не был отменен (кнопку не отпустили)
+                
                 holdTriggered = true;
                 onHold?.Invoke();
             }
