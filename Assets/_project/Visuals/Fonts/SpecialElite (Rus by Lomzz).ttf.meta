@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b9e2dcbd1c912d743a7ca5f393d67610
+guid: d03551c5dc4e9de49bbb779e1aed26dd
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Kaliningrad Historical G
+  - Special Elite (Rus by Lomzz)
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -1,6 +1,9 @@
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class LoadingScreen : MonoBehaviour
+namespace _project.Scripts.UI
 {
-
+    public class LoadingScreen : UIElement
+    {
+    }
 }
