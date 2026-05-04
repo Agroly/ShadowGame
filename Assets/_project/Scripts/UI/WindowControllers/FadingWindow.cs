@@ -12,6 +12,7 @@ namespace _project.Scripts.UI.WindowControllers
 
         protected override async UniTask OnShow(CancellationToken token)
         {
+            Debug.Log("FadingWindow OnShow");
             await FadeAsync(1f, token);
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
@@ -28,8 +29,9 @@ namespace _project.Scripts.UI.WindowControllers
         {
             float startAlpha = canvasGroup.alpha;
             float time = 0;
-
-            while (time < duration)
+            float dynamicDuration = duration * Mathf.Abs(targetAlpha - startAlpha);
+            
+            while (time < dynamicDuration)
             {
                 time += Time.unscaledDeltaTime;
                 canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / duration);

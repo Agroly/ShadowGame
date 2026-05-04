@@ -14,7 +14,7 @@ namespace _project.Scripts.Scopes
         {
             builder.Register<SceneLoaderService>(Lifetime.Singleton);
             builder.Register<UIInput>(Lifetime.Singleton);
-            builder.RegisterEntryPoint<LocalizationService>().AsSelf();
+            builder.Register<LocalizationService>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<LoadingScreen>();
             builder.RegisterEntryPoint<GameEntryPoint>();
         }

@@ -6,13 +6,13 @@ using VContainer.Unity;
 
 namespace _project.Scripts.Localization
 {
-    public class LocalizationService : IStartable
+    public class LocalizationService
     {
         private const string LanguagePrefsKey = "selected-locale";
         
         private List<Locale> _availableLocales;
         
-        public void Start()
+        public void Initialize()
         {
            _availableLocales = LocalizationSettings.AvailableLocales.Locales;
         }
