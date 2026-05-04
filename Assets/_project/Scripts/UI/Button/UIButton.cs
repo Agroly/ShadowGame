@@ -18,23 +18,21 @@ namespace _project.Scripts.UI.Button
         public UnityEvent onPress;
         public UnityEvent onRelease;
 
-        private bool isPressed;
-        private bool holdTriggered;
+        private bool _isPressed;
         
-        private CancellationTokenSource holdCts;
+        private CancellationTokenSource _holdCts;
 
         private void OnDisable()
         {
             CancelHold();
-            isPressed = false;
+            _isPressed = false;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             if (!interactable) return;
 
-            isPressed = true;
-            holdTriggered = false;
+            _isPressed = true;
             onPress?.Invoke();
             
             StartHoldDetection();
@@ -42,7 +40,7 @@ namespace _project.Scripts.UI.Button
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (!isPressed) return;
+            if (!_isPressed) return;
             
             onClick?.Invoke();
 
@@ -56,9 +54,9 @@ namespace _project.Scripts.UI.Button
 
         private void Release()
         {
-            if (!isPressed) return;
+            if (!_isPressed) return;
 
-            isPressed = false;
+            _isPressed = false;
             CancelHold();
             onRelease?.Invoke();
         }
@@ -67,8 +65,8 @@ namespace _project.Scripts.UI.Button
         {
             CancelHold();
             
-            holdCts = new CancellationTokenSource();
-            HandleHoldAsync(holdCts.Token).Forget();
+            _holdCts = new CancellationTokenSource();
+            HandleHoldAsync(_holdCts.Token).Forget();
         }
 
         private async UniTaskVoid HandleHoldAsync(CancellationToken token)
@@ -77,7 +75,6 @@ namespace _project.Scripts.UI.Button
             {
                 await UniTask.Delay((int)(holdDelay * 1000), delayType: DelayType.UnscaledDeltaTime, cancellationToken: token);
                 
-                holdTriggered = true;
                 onHold?.Invoke();
             }
             catch (System.OperationCanceledException)
@@ -87,11 +84,11 @@ namespace _project.Scripts.UI.Button
 
         private void CancelHold()
         {
-            if (holdCts != null)
+            if (_holdCts != null)
             {
-                holdCts.Cancel();
-                holdCts.Dispose();
-                holdCts = null;
+                _holdCts.Cancel();
+                _holdCts.Dispose();
+                _holdCts = null;
             }
         }
     }

@@ -18,20 +18,20 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 329611448320
-    m_Localized: Continue
+  - m_Id: 1001937782673408
+    m_Localized: Back
     m_Metadata:
       m_Items: []
   - m_Id: 359823020032
-    m_Localized: Select level
+    m_Localized: Play
     m_Metadata:
       m_Items: []
   - m_Id: 402109992960
     m_Localized: Settings
     m_Metadata:
       m_Items: []
-  - m_Id: 455864193024
-    m_Localized: Quit
+  - m_Id: 1001836427317248
+    m_Localized: English
     m_Metadata:
       m_Items: []
   references:

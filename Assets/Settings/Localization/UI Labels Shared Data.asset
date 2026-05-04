@@ -16,19 +16,19 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: fb0746caea0dab0468f3c2f3d181d0a0
   m_Entries:
   - m_Id: 359823020032
-    m_Key: MainMenu.levels
-    m_Metadata:
-      m_Items: []
-  - m_Id: 329611448320
     m_Key: MainMenu.play
-    m_Metadata:
-      m_Items: []
-  - m_Id: 455864193024
-    m_Key: MainMenu.quit
     m_Metadata:
       m_Items: []
   - m_Id: 402109992960
     m_Key: MainMenu.settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1001836427317248
+    m_Key: Settings.language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1001937782673408
+    m_Key: Settings.toMenu
     m_Metadata:
       m_Items: []
   m_Metadata:

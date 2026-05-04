@@ -6,6 +6,7 @@ namespace _project.Scripts.UI.WindowControllers
 {
     public abstract class UIWindow : MonoBehaviour
     {
+        [field: SerializeField] public int Depth { get; private set; }
         public async UniTask Show(CancellationToken token)
         {
             using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(token, this.GetCancellationTokenOnDestroy());

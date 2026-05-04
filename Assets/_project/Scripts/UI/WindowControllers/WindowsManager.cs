@@ -1,66 +1,92 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using _project.Scripts.Input;
-using _project.Scripts.UI.Button;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
 
 namespace _project.Scripts.UI.WindowControllers
 {
-    public class WindowsManager : MonoBehaviour
+    public class WindowsManager : IDisposable
     {
-        [Inject] private UIInput _input;
-        [SerializeField] private UIButton settingsButton;
-        [SerializeField] private FadingWindow mainMenu;
-        [SerializeField] private FadingWindow settingsMenu;
+        private readonly UIInput _input;
+        
+        private CancellationTokenSource _windowChangeCts;
         
         private UIWindow _currentWindow;
-        private readonly Stack<UIWindow> _history = new Stack<UIWindow>();
-        private CancellationToken _token;
-        private void Awake()
+        private readonly List<UIWindow> _history = new List<UIWindow>();
+
+        [Inject]
+        public WindowsManager(UIInput input)
         {
-            _currentWindow = mainMenu;
-            _token = this.GetCancellationTokenOnDestroy();
-            settingsButton.onClick.AddListener(OpenSettings);
+            _input = input;
             _input.backAction.performed += OnBackPerformed;
+        }
+
+        public void Setup(UIWindow startWindow)
+        {
+            _currentWindow = startWindow;
         }
 
         private void OnBackPerformed(InputAction.CallbackContext context)
         {
-            if (_history.Count > 0) {
-                var previous = _history.Pop();
-                ChangeWindowTask(previous, true).Forget();
+            if (_history.Count > 0) 
+            {
+                var previous = _history[^1];
+                _history.RemoveAt(_history.Count - 1);
+                
+                SwitchWindow(previous, true);
             }
         }
-        
-        private void OpenSettings()
-        {
-            ChangeWindow(settingsMenu);
-        }
-        
-        private void ChangeWindow(UIWindow nextWindow, bool isBackAction = false)
+
+        public void SwitchWindow(UIWindow nextWindow, bool isBackAction = false)
         {
             ChangeWindowTask(nextWindow, isBackAction).Forget();
         }
 
-        private async UniTaskVoid ChangeWindowTask(UIWindow nextWindow, bool isBackAction = false)
+        private async UniTaskVoid ChangeWindowTask(UIWindow nextWindow, bool isBackAction)
         {
-            if (_currentWindow == nextWindow) return;
+            if (_currentWindow == nextWindow || nextWindow == null) return;
+            
+            _windowChangeCts?.Cancel();
+            _windowChangeCts?.Dispose();
+            
+            _windowChangeCts = new CancellationTokenSource();
+            var token = _windowChangeCts.Token;
 
             var oldWindow = _currentWindow;
-            _currentWindow = nextWindow;
-            
-            if (!isBackAction && oldWindow != null)
+
+            if (!isBackAction)
             {
-                _history.Push(oldWindow);
+                _history.RemoveAll(w => w.Depth >= nextWindow.Depth);
+                if (oldWindow != null && oldWindow.Depth < nextWindow.Depth)
+                {
+                    _history.Add(oldWindow);
+                }
             }
 
-            if (oldWindow != null)
-                await oldWindow.Hide(_token);
-    
-            await _currentWindow.Show(_token);
+            _currentWindow = nextWindow;
+            
+            try 
+            {
+                if (oldWindow != null) 
+                    await oldWindow.Hide(token);
+            
+                if (_currentWindow != null)
+                    await _currentWindow.Show(token);
+            }
+            catch (OperationCanceledException) 
+            {
+            }
+        }
+
+        public void Dispose()
+        {
+            _input.backAction.performed -= OnBackPerformed;
+            
+            _windowChangeCts?.Cancel();
+            _windowChangeCts?.Dispose();
         }
     }
 }
