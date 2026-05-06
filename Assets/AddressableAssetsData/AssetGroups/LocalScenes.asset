@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: LocalScenes
   m_GUID: 8781156a88b8e1446b6ec38ff691bf02
   m_SerializeEntries:
+  - m_GUID: 906d34adbb837b04193f7fa0df8274fb
+    m_Address: Gameplay
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99c9720ab356a0642a771bea13969a05
     m_Address: MainMenu
     m_ReadOnly: 0

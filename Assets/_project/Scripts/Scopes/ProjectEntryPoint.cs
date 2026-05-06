@@ -1,15 +1,14 @@
-﻿using Cysharp.Threading.Tasks;
-using System.Threading;
+﻿using System.Threading;
 using _project.Scripts.Localization;
 using _project.Scripts.SceneManagement;
 using _project.Scripts.UI;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts
+namespace _project.Scripts.Scopes
 {
-    public class GameEntryPoint : IAsyncStartable
+    public class ProjectEntryPoint : IAsyncStartable
     {
         private SceneLoaderService _sceneLoader;
         private LoadingScreen _loadingScreen;
@@ -26,11 +25,9 @@ namespace _project.Scripts
 
         public async UniTask StartAsync(CancellationToken cancellation)
         {
-            Debug.Log("initialScene");
             _loadingScreen.Show();
             _localizationService.Initialize();
             await _sceneLoader.LoadAsync("MainMenu");
-            _loadingScreen.Hide();
         }
     }
 }
