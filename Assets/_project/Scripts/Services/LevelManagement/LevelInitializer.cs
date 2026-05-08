@@ -1,4 +1,4 @@
-﻿using _project.Scripts.GameManagement;
+﻿using _project.Scripts.Services.GameManagement;
 using Cysharp.Threading.Tasks;
 using VContainer;
 

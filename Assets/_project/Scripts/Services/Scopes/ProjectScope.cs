@@ -1,9 +1,9 @@
 using _project.Scripts.AssetsManagement;
-using _project.Scripts.GameManagement;
 using _project.Scripts.Input;
 using _project.Scripts.LevelManagement;
 using _project.Scripts.Localization;
 using _project.Scripts.SceneManagement;
+using _project.Scripts.Services.GameManagement;
 using _project.Scripts.UI;
 using VContainer;
 using VContainer.Unity;
