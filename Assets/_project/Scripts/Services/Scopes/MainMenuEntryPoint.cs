@@ -3,7 +3,7 @@ using _project.Scripts.UI.LevelIcons;
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts.Scopes
+namespace _project.Scripts.Services.Scopes
 {
     public class MainMenuEntryPoint: IStartable
     {

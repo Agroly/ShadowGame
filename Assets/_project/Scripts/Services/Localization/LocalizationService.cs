@@ -2,9 +2,8 @@
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
-using VContainer.Unity;
 
-namespace _project.Scripts.Localization
+namespace _project.Scripts.Services.Localization
 {
     public class LocalizationService
     {

@@ -1,12 +1,12 @@
 ﻿using System.Threading;
-using _project.Scripts.Localization;
-using _project.Scripts.SceneManagement;
+using _project.Scripts.Services.Localization;
+using _project.Scripts.Services.SceneManagement;
 using _project.Scripts.UI;
 using Cysharp.Threading.Tasks;
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts.Scopes
+namespace _project.Scripts.Services.Scopes
 {
     public class ProjectEntryPoint : IAsyncStartable
     {

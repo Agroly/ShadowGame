@@ -1,6 +1,6 @@
+using _project.Scripts.Services.Input;
 using UnityEngine;
 using VContainer;
-using _project.Scripts.Input;
 
 namespace _project.Scripts.Gameplay
 {

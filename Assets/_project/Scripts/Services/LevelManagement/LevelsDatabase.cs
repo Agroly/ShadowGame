@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using _project.Scripts.Services.LevelManagement;
 using UnityEngine;
 
-namespace _project.Scripts.LevelManagement
+namespace _project.Scripts.Services.LevelManagement
 {
     public class LevelsDatabase : MonoBehaviour
     {
@@ -12,7 +11,7 @@ namespace _project.Scripts.LevelManagement
         
         public LevelConfig GetLevelById(string id)
         {
-            return database.Find(x => x.levelId == id);
+            return database.Find(x => x.LevelId == id);
         }
         
 #if UNITY_EDITOR
@@ -31,7 +30,7 @@ namespace _project.Scripts.LevelManagement
                 if (config == null) 
                     continue;
 
-                var id = config.levelId;
+                var id = config.LevelId;
 
                 if (string.IsNullOrEmpty(id))
                 {

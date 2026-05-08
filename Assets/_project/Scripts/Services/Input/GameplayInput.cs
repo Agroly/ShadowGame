@@ -1,6 +1,6 @@
 ﻿using UnityEngine.InputSystem;
 
-namespace _project.Scripts.Input
+namespace _project.Scripts.Services.Input
 {
             public class GameplayInput
             {
@@ -13,7 +13,6 @@ namespace _project.Scripts.Input
 
                 public GameplayInput()
                 {
-                    // Ищем карту Gameplay в ассете
                     _map = InputSystem.actions.FindActionMap("Gameplay");
 
                     PrimaryContact = _map.FindAction("PrimaryContact");

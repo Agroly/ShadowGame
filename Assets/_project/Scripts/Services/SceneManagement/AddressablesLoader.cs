@@ -1,4 +1,4 @@
-﻿namespace _project.Scripts.SceneManagement
+﻿namespace _project.Scripts.Services.SceneManagement
 {
     public class AddressablesLoaderService
     {

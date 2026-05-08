@@ -1,4 +1,4 @@
-﻿using _project.Scripts.LevelManagement;
+﻿using _project.Scripts.Services.GameManagement;
 using _project.Scripts.UI.Button;
 using Cysharp.Threading.Tasks;
 using TMPro;
@@ -10,9 +10,9 @@ namespace _project.Scripts.UI.LevelIcons
     [RequireComponent(typeof(UIButton))]
     public class LevelIcon : MonoBehaviour
     {
+        [Inject] private GameManager _gameManager;
         [SerializeField] private TextMeshProUGUI levelId;
-
-        private LevelInitializer _levelInitializer;
+        
         private UIButton _button;
         private void Awake()
         {
@@ -28,15 +28,14 @@ namespace _project.Scripts.UI.LevelIcons
             _button.onClick.RemoveListener(OnButtonClick);
         }
 
-        public void Initialize(string id, LevelInitializer levelInitializer)
+        public void Initialize(string id)
         {
             levelId.text = id;
-            _levelInitializer = levelInitializer;
         }
 
         private void OnButtonClick()
         {
-            _levelInitializer.StartLevel(levelId.text).Forget();
+            _gameManager.StartGameplay(levelId.text).Forget();
         }
     }
 }

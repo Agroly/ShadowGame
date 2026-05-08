@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using _project.Scripts.Input;
+using _project.Scripts.Services.Input;
 using Cysharp.Threading.Tasks;
 using UnityEngine.InputSystem;
 using VContainer;

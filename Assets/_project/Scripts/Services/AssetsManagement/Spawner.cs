@@ -2,7 +2,7 @@
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts.AssetsManagement
+namespace _project.Scripts.Services.AssetsManagement
 {
     public class Spawner
     {

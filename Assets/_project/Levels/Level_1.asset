@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6a2a1676cd4169a2a896ef8d892a55, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.LevelManagement.LevelConfig
-  levelId: 1
-  environmentScene:
+  _levelId: 1
+  _environmentScene:
     m_AssetGUID: 884d93c11aeac3748b58231bd49be8de
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
-  gameplayObjectPrefab:
+  _gameplayObjectPrefab:
     m_AssetGUID: b584ae84a81706c40886632b6b88318b
     m_SubObjectName: 
     m_SubObjectType: 

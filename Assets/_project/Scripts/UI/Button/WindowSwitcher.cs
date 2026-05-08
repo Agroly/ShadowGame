@@ -1,5 +1,4 @@
-﻿using _project.Scripts.Localization;
-using _project.Scripts.UI.WindowControllers;
+﻿using _project.Scripts.UI.WindowControllers;
 using UnityEngine;
 using VContainer;
 

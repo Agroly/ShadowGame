@@ -1,6 +1,6 @@
 ﻿using UnityEngine.InputSystem;
 
-namespace _project.Scripts.Input
+namespace _project.Scripts.Services.Input
 {
     public class UIInput
     {

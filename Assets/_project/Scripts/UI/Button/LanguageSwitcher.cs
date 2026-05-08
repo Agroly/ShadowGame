@@ -1,4 +1,4 @@
-﻿using _project.Scripts.Localization;
+﻿using _project.Scripts.Services.Localization;
 using UnityEngine;
 using VContainer;
 

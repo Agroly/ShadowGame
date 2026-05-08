@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace _project.Scripts.AssetsManagement
+namespace _project.Scripts.Services.AssetsManagement
 {
    public class AssetLoaderService : IDisposable
     {
@@ -26,6 +27,7 @@ namespace _project.Scripts.AssetsManagement
             try
             {
                 T result = await handle.ToUniTask(cancellationToken: ct);
+                Debug.Log("Asset Loaded");
                 return result;
             }
             catch (Exception)
