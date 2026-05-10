@@ -21,12 +21,12 @@ namespace _project.Scripts.Services.Scopes
         private LoadingScreen _loadingScreen;
 
         [Inject]
-        public void Construct(GameManager gameManager, AssetLoaderService assetLoaderService,
-            Spawner spawner, SceneLoaderService sceneLoaderService, LoadingScreen loadingScreen)
+        public void Construct(GameFlowService gameFlowService, AssetLoaderService assetLoaderService,
+            Spawner spawner, SceneLoaderService sceneLoaderService, LoadingScreen loadingScreen, LevelConfig levelConfig)
         {
             _assetLoaderService = assetLoaderService;
             _spawner = spawner;
-            _levelConfig = gameManager.CurrentLevelConfig;
+            _levelConfig = levelConfig;
             _sceneLoaderService = sceneLoaderService;
             _loadingScreen = loadingScreen;
         }

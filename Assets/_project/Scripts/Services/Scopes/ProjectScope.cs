@@ -17,7 +17,7 @@ namespace _project.Scripts.Services.Scopes
             builder.Register<SceneLoaderService>(Lifetime.Singleton);
             builder.Register<UIInput>(Lifetime.Singleton);
             builder.Register<LocalizationService>(Lifetime.Singleton);
-            builder.Register<GameManager>(Lifetime.Singleton);
+            builder.Register<GameFlowService>(Lifetime.Singleton);
             builder.Register<AssetLoaderService>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<LoadingScreen>();
             builder.RegisterComponentInHierarchy<LevelsDatabase>();

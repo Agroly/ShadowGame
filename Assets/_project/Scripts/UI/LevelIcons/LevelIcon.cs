@@ -10,7 +10,7 @@ namespace _project.Scripts.UI.LevelIcons
     [RequireComponent(typeof(UIButton))]
     public class LevelIcon : MonoBehaviour
     {
-        [Inject] private GameManager _gameManager;
+        [Inject] private GameFlowService _gameFlowService;
         [SerializeField] private TextMeshProUGUI levelId;
         
         private UIButton _button;
@@ -35,7 +35,7 @@ namespace _project.Scripts.UI.LevelIcons
 
         private void OnButtonClick()
         {
-            _gameManager.StartGameplay(levelId.text).Forget();
+            _gameFlowService.StartGameplay(levelId.text).Forget();
         }
     }
 }

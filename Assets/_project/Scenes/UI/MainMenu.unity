@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Scopes.MainMenuScope
   parentReference:
-    TypeName: _project.Scripts.Scopes.ProjectScope
+    TypeName: _project.Scripts.Services.Scopes.ProjectScope
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 635969231}
@@ -1044,8 +1044,6 @@ MonoBehaviour:
   - {fileID: 1551990783}
   - {fileID: 617998420}
   startWindow: {fileID: 1438129836}
-  levelIconPrefab: {fileID: 7639429815828899223, guid: 3ae802619c020b14ba0163acb1467652, type: 3}
-  levelIconsParent: {fileID: 590498108}
 --- !u!1 &1029387561
 GameObject:
   m_ObjectHideFlags: 0

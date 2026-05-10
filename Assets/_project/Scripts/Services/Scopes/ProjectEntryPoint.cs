@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.Localization;
 using _project.Scripts.Services.SceneManagement;
 using _project.Scripts.UI;
@@ -10,24 +11,20 @@ namespace _project.Scripts.Services.Scopes
 {
     public class ProjectEntryPoint : IAsyncStartable
     {
-        private SceneLoaderService _sceneLoader;
-        private LoadingScreen _loadingScreen;
+        private GameFlowService _gameFlowService;
         private LocalizationService _localizationService;
 
         [Inject]
-        public void Construct(SceneLoaderService sceneLoader, LoadingScreen loadingScreen,
-            LocalizationService localizationService)
+        public void Construct(GameFlowService gameFlowService, LocalizationService localizationService)
         {
-            _sceneLoader = sceneLoader;
-            _loadingScreen = loadingScreen;
+            _gameFlowService = gameFlowService;
             _localizationService = localizationService;
         }
 
         public async UniTask StartAsync(CancellationToken cancellation)
         {
-            _loadingScreen.Show();
             _localizationService.Initialize();
-            await _sceneLoader.LoadAsync("MainMenu");
+            await _gameFlowService.StartMainMenu();
         }
     }
 }

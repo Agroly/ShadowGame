@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.LevelManagement.LevelConfig
   _levelId: 2
   _environmentScene:
-    m_AssetGUID: 
+    m_AssetGUID: 884d93c11aeac3748b58231bd49be8de
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _gameplayObjectPrefab:
-    m_AssetGUID: 
+    m_AssetGUID: f4f41d7e932de604fbcb28112ea6047c
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
+    m_EditorAssetChanged: 1
