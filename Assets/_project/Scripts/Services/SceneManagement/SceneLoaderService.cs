@@ -19,9 +19,9 @@ namespace _project.Scripts.Services.SceneManagement
             if (loadSceneMode == LoadSceneMode.Single)
             {
                 _singleSceneReady = new UniTaskCompletionSource();
-
-                await UnloadLoadedScenesWithout(sceneName);
+                
                 await LoadSceneInternalAsync(sceneName, loadSceneMode);
+                await UnloadLoadedScenesWithout(sceneName);
                 
                 _singleSceneReady.TrySetResult();
                 _singleSceneReady = null;

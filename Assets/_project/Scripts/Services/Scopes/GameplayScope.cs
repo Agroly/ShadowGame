@@ -1,4 +1,5 @@
-﻿using _project.Scripts.Services.AssetsManagement;
+﻿using _project.Scripts.Gameplay;
+using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.Services.Input;
 using _project.Scripts.UI.LevelIcons;
 using VContainer;
@@ -12,6 +13,7 @@ namespace _project.Scripts.Services.Scopes
         {
             builder.Register<GameplayInput>(Lifetime.Singleton);
             builder.Register<Spawner>(Lifetime.Singleton);
+            builder.Register<TouchSelectionService>(Lifetime.Singleton);
             builder.RegisterEntryPoint<GameplayEntryPoint>();
         }
     }

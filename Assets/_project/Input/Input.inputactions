@@ -47,12 +47,12 @@
             "actions": [
                 {
                     "name": "PrimaryContact",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "83999971-d9d0-4305-8682-dfb6d85940d6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "PrimaryPosition",
