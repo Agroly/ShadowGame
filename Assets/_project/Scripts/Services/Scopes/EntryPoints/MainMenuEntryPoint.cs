@@ -3,7 +3,7 @@ using _project.Scripts.UI.LevelIcons;
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts.Services.GameManagement.EntryPoints
+namespace _project.Scripts.Services.Scopes.EntryPoints
 {
     public class MainMenuEntryPoint: IStartable
     {

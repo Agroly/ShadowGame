@@ -1,10 +1,10 @@
 using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.Services.GameManagement;
-using _project.Scripts.Services.GameManagement.EntryPoints;
 using _project.Scripts.Services.Input;
 using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.Localization;
 using _project.Scripts.Services.SceneManagement;
+using _project.Scripts.Services.Scopes.EntryPoints;
 using _project.Scripts.UI;
 using VContainer;
 using VContainer.Unity;

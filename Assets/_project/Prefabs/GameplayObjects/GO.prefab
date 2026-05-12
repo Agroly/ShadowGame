@@ -121,8 +121,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1399133542363377562}
-  - component: {fileID: 8334872279044347306}
   - component: {fileID: -7953709366725631540}
+  - component: {fileID: 1387192011004266284}
   m_Layer: 3
   m_Name: GO
   m_TagString: Untagged
@@ -146,20 +146,6 @@ Transform:
   - {fileID: 7357940306039944831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8334872279044347306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7990288904344219760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be99e9193e999b4a9c8546e1ab80015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Gameplay.TouchRotateHandler
-  _rotationSpeed: 0.5
-  _dualTouchMultiplier: 3
 --- !u!114 &-7953709366725631540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +159,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Gameplay.Animations.GameObjectSpawnAnimation
   duration: 0.7
+--- !u!114 &1387192011004266284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990288904344219760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f45b8523e61a9f42b92ea4617b576a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Gameplay.TouchRotateController
+  _rotationSpeed: 0.1
+  _inertiaDamping: 0.92
+  _inertiaMinSpeed: 0.05

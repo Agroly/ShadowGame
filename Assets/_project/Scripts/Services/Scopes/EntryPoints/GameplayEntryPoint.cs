@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using _project.Scripts.Gameplay;
 using _project.Scripts.Gameplay.Animations;
 using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.Services.Input;
@@ -11,7 +12,7 @@ using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts.Services.GameManagement.EntryPoints
+namespace _project.Scripts.Services.Scopes.EntryPoints
 {
     public class GameplayEntryPoint: IAsyncStartable
     {
@@ -22,12 +23,14 @@ namespace _project.Scripts.Services.GameManagement.EntryPoints
         private LoadingScreen _loadingScreen;
         private GameplayInput _input;
         private GameObjectSpawnAnimation _gameObjectSpawnAnimation;
+        private RotationTracker _tracker;
 
         [Inject]
         public void Construct(GameplayInput input, AssetLoaderService assetLoaderService,
             Spawner spawner, SceneLoaderService sceneLoaderService,
             LoadingScreen loadingScreen, LevelConfig levelConfig,
-            GameObjectSpawnAnimation gameObjectSpawnAnimation)
+            GameObjectSpawnAnimation gameObjectSpawnAnimation,
+            RotationTracker rotationTracker)
         {
             
             _assetLoaderService = assetLoaderService;
@@ -37,13 +40,15 @@ namespace _project.Scripts.Services.GameManagement.EntryPoints
             _loadingScreen = loadingScreen;
             _gameObjectSpawnAnimation = gameObjectSpawnAnimation;
             _input = input;
+            _tracker = rotationTracker;
         }
 
         public async UniTask StartAsync(CancellationToken token)
         {
             await _sceneLoaderService.LoadAsync(_levelConfig.EnvironmentScene.AssetGUID, LoadSceneMode.Additive);
             var gameObject = await _assetLoaderService.LoadAsync<GameObject>(_levelConfig.GameplayObjectPrefab.AssetGUID);
-            _spawner.Instantiate(gameObject, _gameObjectSpawnAnimation.transform);
+            var target = _spawner.Instantiate(gameObject, _gameObjectSpawnAnimation.transform);
+            _tracker.SetTarget(target.transform);
             _loadingScreen.Hide();
             await _gameObjectSpawnAnimation.AnimateSpawn(token);
             _input.Enable();

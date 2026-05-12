@@ -1,5 +1,5 @@
 ﻿using _project.Scripts.Services.AssetsManagement;
-using _project.Scripts.Services.GameManagement.EntryPoints;
+using _project.Scripts.Services.Scopes.EntryPoints;
 using _project.Scripts.UI.LevelIcons;
 using _project.Scripts.UI.WindowControllers;
 using UnityEngine;
