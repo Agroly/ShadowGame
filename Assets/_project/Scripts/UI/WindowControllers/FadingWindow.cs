@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _project.Scripts.UI.WindowControllers
@@ -27,18 +28,11 @@ namespace _project.Scripts.UI.WindowControllers
 
         private async UniTask FadeAsync(float targetAlpha, CancellationToken token)
         {
-            float startAlpha = canvasGroup.alpha;
-            float time = 0;
-            float dynamicDuration = duration * Mathf.Abs(targetAlpha - startAlpha);
-            
-            while (time < dynamicDuration)
-            {
-                time += Time.unscaledDeltaTime;
-                canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / duration);
-                await UniTask.Yield(PlayerLoopTiming.Update, token);
-            }
+            var dynamicDuration = duration * Mathf.Abs(targetAlpha - canvasGroup.alpha);
 
-            canvasGroup.alpha = targetAlpha;
+            await canvasGroup.DOFade(targetAlpha, dynamicDuration)
+                .SetEase(Ease.InSine)
+                .ToUniTask(cancellationToken: token);
         }
     }
 }

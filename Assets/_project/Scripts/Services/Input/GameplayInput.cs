@@ -29,6 +29,7 @@ namespace _project.Scripts.Services.Input
         public GameplayInput()
         {
             _map = InputSystem.actions.FindActionMap("Gameplay");
+            _map.Disable();
             _primaryContact = _map.FindAction("PrimaryContact");
             _primaryPosition = _map.FindAction("PrimaryPosition");
             _secondaryContact = _map.FindAction("SecondaryContact");
@@ -41,10 +42,10 @@ namespace _project.Scripts.Services.Input
             _secondaryContact.started += OnSecondaryStarted;
             _secondaryContact.canceled += OnSecondaryEnded;
             _secondaryPosition.performed += OnSecondaryMoved;
-            
-            _primaryContact.started += ctx => Debug.Log("Primary started direct");
-            _primaryContact.canceled += ctx => Debug.Log("Primary ended direct");
+        }
 
+        public void Enable()
+        {
             _map.Enable();
         }
 

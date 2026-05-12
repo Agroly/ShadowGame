@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,9 @@ namespace _project.Scripts.UI.Button
     [RequireComponent(typeof(Image))]
     public class ButtonAnimator : MonoBehaviour
     {
-        public float pressedScale = 0.9f;
-        public float speed = 10f;
-        public float darken = 0.75f;
+        [SerializeField] private float pressedScale = 0.9f;
+        [SerializeField] private float duration = 0.15f;
+        [SerializeField] private float darken = 0.75f;
 
         private UIButton button;
         private Image image;
@@ -65,20 +66,10 @@ namespace _project.Scripts.UI.Button
 
         private async UniTaskVoid Animate(Vector3 targetScale, Color targetColor, CancellationToken token)
         {
-            try
-            {
-                while (Vector3.Distance(transform.localScale, targetScale) > 0.001f)
-                {
-                    transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * speed);
-                    image.color = Color.Lerp(image.color, targetColor, Time.deltaTime * speed);
-
-                    await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: token);
-                }
-                
-                transform.localScale = targetScale;
-                image.color = targetColor;
-            }
-            catch (System.OperationCanceledException) { }
+            await DOTween.Sequence()
+                .Join(transform.DOScale(targetScale, duration).SetEase(Ease.OutSine))
+                .Join(image.DOColor(targetColor, duration).SetEase(Ease.OutSine))
+                .ToUniTask(cancellationToken: token);
         }
 
         private void KillAnimation()

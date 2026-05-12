@@ -1,13 +1,11 @@
 ﻿using System.Threading;
-using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.Localization;
-using _project.Scripts.Services.SceneManagement;
-using _project.Scripts.UI;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts.Services.Scopes
+namespace _project.Scripts.Services.GameManagement.EntryPoints
 {
     public class ProjectEntryPoint : IAsyncStartable
     {
@@ -24,6 +22,7 @@ namespace _project.Scripts.Services.Scopes
         public async UniTask StartAsync(CancellationToken cancellation)
         {
             _localizationService.Initialize();
+            Application.targetFrameRate = 60;
             await _gameFlowService.StartMainMenu();
         }
     }

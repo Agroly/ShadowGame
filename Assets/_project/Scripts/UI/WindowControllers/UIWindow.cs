@@ -9,17 +9,13 @@ namespace _project.Scripts.UI.WindowControllers
         [field: SerializeField] public int Depth { get; private set; }
         public async UniTask Show(CancellationToken token)
         {
-            using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(token, this.GetCancellationTokenOnDestroy());
-        
             gameObject.SetActive(true);
-            await OnShow(linkedCts.Token);
+            await OnShow(token);
         }
 
         public async UniTask Hide(CancellationToken token)
         {
-            using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(token, this.GetCancellationTokenOnDestroy());
-        
-            await OnHide(linkedCts.Token);
+            await OnHide(token);
             gameObject.SetActive(false);
         }
     

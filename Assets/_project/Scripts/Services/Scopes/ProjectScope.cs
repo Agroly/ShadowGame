@@ -1,5 +1,6 @@
 using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.Services.GameManagement;
+using _project.Scripts.Services.GameManagement.EntryPoints;
 using _project.Scripts.Services.Input;
 using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.Localization;
