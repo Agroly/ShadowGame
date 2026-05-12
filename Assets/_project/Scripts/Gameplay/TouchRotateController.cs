@@ -65,8 +65,7 @@ namespace _project.Scripts.Gameplay
 
             Vector2 delta = pos - _prevPrimaryPos;
             _prevPrimaryPos = pos;
-
-            // Свободное вращение (XY относительно камеры)
+            
             transform.Rotate(_mainCamera.transform.up, -delta.x * _rotationSpeed, Space.World);
             transform.Rotate(_mainCamera.transform.right, delta.y * _rotationSpeed, Space.World);
         }

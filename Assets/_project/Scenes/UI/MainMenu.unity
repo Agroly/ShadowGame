@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.Button.ButtonAnimator
   pressedScale: 0.9
-  speed: 10
+  duration: 0.15
   darken: 0.75
 --- !u!114 &183627386
 MonoBehaviour:
@@ -695,7 +695,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1599729680}
   m_Father: {fileID: 122074518}
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.Button.ButtonAnimator
   pressedScale: 0.9
-  speed: 10
+  duration: 0.15
   darken: 0.75
 --- !u!114 &617998426
 MonoBehaviour:
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.Button.ButtonAnimator
   pressedScale: 0.9
-  speed: 10
+  duration: 0.15
   darken: 0.75
 --- !u!114 &635969237
 MonoBehaviour:
@@ -1095,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.WindowControllers.FadingWindow
   <Depth>k__BackingField: 1
-  duration: 0.5
+  duration: 0.25
   canvasGroup: {fileID: 1029387564}
 --- !u!225 &1029387564
 CanvasGroup:
@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.WindowControllers.FadingWindow
   <Depth>k__BackingField: 0
-  duration: 0.5
+  duration: 0.25
   canvasGroup: {fileID: 1438129837}
 --- !u!225 &1438129837
 CanvasGroup:
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.Button.ButtonAnimator
   pressedScale: 0.9
-  speed: 10
+  duration: 0.15
   darken: 0.75
 --- !u!114 &1551990786
 MonoBehaviour:
@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.WindowControllers.FadingWindow
   <Depth>k__BackingField: 1
-  duration: 0.5
+  duration: 0.25
   canvasGroup: {fileID: 1774095754}
 --- !u!225 &1774095754
 CanvasGroup:
