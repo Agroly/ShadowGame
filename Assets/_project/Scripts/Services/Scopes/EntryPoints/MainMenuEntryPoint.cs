@@ -1,5 +1,6 @@
 ﻿using _project.Scripts.UI;
 using _project.Scripts.UI.LevelIcons;
+using _project.Scripts.UI.WindowControllers;
 using VContainer;
 using VContainer.Unity;
 
@@ -12,7 +13,7 @@ namespace _project.Scripts.Services.Scopes.EntryPoints
         [Inject]
         public void Construct(LevelIconsFactory factory, LoadingScreen loadingScreen)
         {
-                _levelIconsFactory = factory;
+            _levelIconsFactory = factory;
             _loadingScreen = loadingScreen;
         }
         public void Start()

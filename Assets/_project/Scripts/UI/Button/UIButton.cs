@@ -9,7 +9,7 @@ namespace _project.Scripts.UI.Button
     public class UIButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
         [Header("Settings")]
-        [SerializeField] private bool interactable = true;
+        [SerializeField] public bool interactable = true;
         [SerializeField] private float holdDelay = 0.5f;
 
         [Header("Events")]

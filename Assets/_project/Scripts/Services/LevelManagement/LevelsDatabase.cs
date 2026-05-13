@@ -3,15 +3,29 @@ using UnityEngine;
 
 namespace _project.Scripts.Services.LevelManagement
 {
-    public class LevelsDatabase : MonoBehaviour
+    [CreateAssetMenu(menuName = "Game/Levels Database")]
+    public class LevelsDatabase : ScriptableObject
     {
-        [SerializeField] private List<LevelConfig> database = new List<LevelConfig>();
-        
-        public IReadOnlyList<LevelConfig> Database => database;
-        
+        [SerializeField] private List<LevelConfig> _levels = new();
+
+        private Dictionary<string, LevelConfig> _lookup;
+
+        public IReadOnlyList<LevelConfig> Levels => _levels;
+
         public LevelConfig GetLevelById(string id)
         {
-            return database.Find(x => x.LevelId == id);
+            BuildLookupIfNeeded();
+            return _lookup.GetValueOrDefault(id, null);
+        }
+
+        private void BuildLookupIfNeeded()
+        {
+            if (_lookup != null && _lookup.Count == _levels.Count) return;
+
+            _lookup = new Dictionary<string, LevelConfig>(_levels.Count);
+            foreach (var config in _levels)
+                if (config != null && !string.IsNullOrEmpty(config.LevelId))
+                    _lookup[config.LevelId] = config;
         }
         
 #if UNITY_EDITOR
@@ -24,9 +38,9 @@ namespace _project.Scripts.Services.LevelManagement
         {
             var ids = new HashSet<string>();
 
-            for (int i = 0; i < database.Count; i++)
+            for (int i = 0; i < Levels.Count; i++)
             {
-                var config = database[i];
+                var config = Levels[i];
                 if (config == null) 
                     continue;
 

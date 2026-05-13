@@ -6,6 +6,7 @@ using _project.Scripts.Services.Input;
 using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.SceneManagement;
 using _project.Scripts.UI;
+using _project.Scripts.UI.WindowControllers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,13 +25,14 @@ namespace _project.Scripts.Services.Scopes.EntryPoints
         private GameplayInput _input;
         private GameObjectSpawnAnimation _gameObjectSpawnAnimation;
         private RotationTracker _tracker;
+        private GameTimer _gameTimer;
 
         [Inject]
         public void Construct(GameplayInput input, AssetLoaderService assetLoaderService,
             Spawner spawner, SceneLoaderService sceneLoaderService,
             LoadingScreen loadingScreen, LevelConfig levelConfig,
             GameObjectSpawnAnimation gameObjectSpawnAnimation,
-            RotationTracker rotationTracker)
+            RotationTracker rotationTracker, GameTimer gameTimer)
         {
             
             _assetLoaderService = assetLoaderService;
@@ -41,6 +43,7 @@ namespace _project.Scripts.Services.Scopes.EntryPoints
             _gameObjectSpawnAnimation = gameObjectSpawnAnimation;
             _input = input;
             _tracker = rotationTracker;
+            _gameTimer = gameTimer;
         }
 
         public async UniTask StartAsync(CancellationToken token)
@@ -51,7 +54,9 @@ namespace _project.Scripts.Services.Scopes.EntryPoints
             _tracker.SetTarget(target.transform);
             _loadingScreen.Hide();
             await _gameObjectSpawnAnimation.AnimateSpawn(token);
+            _gameTimer.Start();
             _input.Enable();
+            
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading;
+using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.Input;
-using _project.Scripts.UI.Gameplay;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -9,21 +11,21 @@ namespace _project.Scripts.Gameplay
 {
     public class RotationTracker : ITickable, IDisposable
     {
-        private ProgressUI _progressUI;
-        private GameplayInput _gameplayInput;
+        public event Action<float> AccuracyChanged;
+
+        private readonly GameplayInput _gameplayInput;
+        private readonly GameplayResultsController _gameplayResultsController;
         private Transform _target;
 
-        private bool checkRotation = false;
-        
-        private static readonly Quaternion Identity = Quaternion.identity;
-        private static readonly Quaternion MirrorY180 = Quaternion.Euler(0f, 180f, 0f);
-        
+        private bool _checkRotation;
+        private float _accuracy;
+        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
+
         [Inject]
-        public RotationTracker(GameplayInput gameplayInput, ProgressUI progressUI)
+        public RotationTracker(GameplayInput gameplayInput, GameplayResultsController gameplayResultsController)
         {
-            _progressUI = progressUI;
             _gameplayInput = gameplayInput;
-            
+            _gameplayResultsController = gameplayResultsController;
             _gameplayInput.PrimaryStarted += OnPrimaryStarted;
             _gameplayInput.PrimaryEnded += OnPrimaryEnded;
         }
@@ -32,54 +34,63 @@ namespace _project.Scripts.Gameplay
         {
             _gameplayInput.PrimaryStarted -= OnPrimaryStarted;
             _gameplayInput.PrimaryEnded -= OnPrimaryEnded;
+            _cts.Cancel();
+            _cts.Dispose();
         }
-        
-        private void OnPrimaryStarted(Vector2 obj)
+
+        private void OnPrimaryStarted(Vector2 _)
         {
-            checkRotation = true; 
+            _checkRotation = true;
         }
 
         private void OnPrimaryEnded()
         {
-            checkRotation = false;
+            _checkRotation = false;
+            if (_accuracy == 100f)
+                EndGame(_cts.Token).Forget();
         }
-        
+
         public void SetTarget(Transform target)
         {
             _target = target;
         }
-        
+
         public void Tick()
         {
-            if (checkRotation) CheckRotation();
+            if (!_checkRotation)
+                return;
+
+            _accuracy = GetRotationAccuracy();
+
+            AccuracyChanged?.Invoke(_accuracy);
         }
-        
-        private void CheckRotation()
-        {
-            Debug.Log("CheckRotation");
-            var accuracy = GetRotationAccuracy();
-            _progressUI.SetAccuracy(accuracy);
-        }
-        
-        
 
         private float GetRotationAccuracy()
         {
-            if (_target == null) return -1f;
+            if (_target == null)
+                return -1f;
 
-            Quaternion current = _target.rotation;
+            float bestAngle = Mathf.Min(
+                Quaternion.Angle(_target.rotation, Quaternion.identity),
+                Quaternion.Angle(_target.rotation, Quaternion.Euler(0f, 180f, 0f))
+            );
 
-            var angleToIdentity = Quaternion.Angle(current, Identity);
-            var angleToMirror = Quaternion.Angle(current, MirrorY180);
+            float normalized = 1f - bestAngle / 180f;
 
-            var bestAngle = Mathf.Min(angleToIdentity, angleToMirror);
-            
+            return Mathf.InverseLerp(20f, 90f, normalized * 100f) * 100f;
+        }
 
-            float rawAccuracy = (1f - (bestAngle / 180f)) * 100f;
-            
-            float accuracy = Mathf.InverseLerp(0f, 90f, rawAccuracy) * 100f;
+        private async UniTask EndGame(CancellationToken token)
+        {
+            if (_target == null)
+                return;
 
-            return Mathf.Clamp(accuracy, 0f, 100f);
+            var bestRotation = Quaternion.Angle(_target.rotation, Quaternion.identity)
+                               <= Quaternion.Angle(_target.rotation, Quaternion.Euler(0f, 180f, 0f))
+                ? Quaternion.identity
+                : Quaternion.Euler(0f, 180f, 0f);
+
+            await _gameplayResultsController.EndGame(_target, bestRotation, token);
         }
     }
 }

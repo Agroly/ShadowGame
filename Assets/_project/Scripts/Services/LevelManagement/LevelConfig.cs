@@ -10,10 +10,12 @@ namespace _project.Scripts.Services.LevelManagement
         [SerializeField] private string _levelId;
         [SerializeField] private AssetReference _environmentScene;
         [SerializeField] private AssetReferenceGameObject _gameplayObjectPrefab;
+        [SerializeField] private Sprite _sprite;
 
         public string LevelId => _levelId;
         public AssetReference EnvironmentScene => _environmentScene;
         public AssetReferenceGameObject GameplayObjectPrefab => _gameplayObjectPrefab;
+        public Sprite Sprite => _sprite;
 
 #if UNITY_EDITOR
         private void OnValidate()

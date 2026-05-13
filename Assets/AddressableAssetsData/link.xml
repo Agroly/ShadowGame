@@ -9,6 +9,7 @@
     <type fullname="_project.Scripts.UI.Button.UIButton" preserve="all" />
     <type fullname="_project.Scripts.UI.Button.WindowSwitcher" preserve="all" />
     <type fullname="_project.Scripts.UI.Gameplay.ProgressUI" preserve="all" />
+    <type fullname="_project.Scripts.UI.Gameplay.TimeResultText" preserve="all" />
     <type fullname="_project.Scripts.UI.LevelIcons.LevelIcon" preserve="all" />
     <type fullname="_project.Scripts.UI.LevelIcons.LevelIconsFactory" preserve="all" />
     <type fullname="_project.Scripts.UI.WindowControllers.FadingWindow" preserve="all" />

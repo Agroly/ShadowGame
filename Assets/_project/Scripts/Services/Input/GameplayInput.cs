@@ -48,6 +48,11 @@ namespace _project.Scripts.Services.Input
         {
             _map.Enable();
         }
+        public void Disable()
+        {
+            _map.Disable();
+        }
+
 
         private void OnPrimaryStarted(InputAction.CallbackContext context)
         {

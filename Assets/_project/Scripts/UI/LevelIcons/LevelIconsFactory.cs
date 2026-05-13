@@ -9,21 +9,26 @@ namespace _project.Scripts.UI.LevelIcons
     {
         private LevelsDatabase _levelsDatabase;
         private Spawner _spawner;
+        private LevelAvailabilityService _levelAvailabilityService;
+        
         [SerializeField] private LevelIcon levelIconPrefab;
         [SerializeField] private Transform levelIconsParent;
         
         [Inject]
-        public void Construct(LevelsDatabase levelsDatabase, Spawner spawner)
+        public void Construct(LevelsDatabase levelsDatabase, Spawner spawner, 
+            LevelAvailabilityService levelAvailabilityService)
         {
             _levelsDatabase = levelsDatabase;
             _spawner = spawner;
+            _levelAvailabilityService = levelAvailabilityService;
         }
         public void SpawnLevelIcons()
         {
-            foreach (var levelConfig in _levelsDatabase.Database)
+            foreach (var levelConfig in _levelsDatabase.Levels)
             {
-                _spawner.Instantiate(levelIconPrefab, levelIconsParent)
-                    .Initialize(levelConfig.LevelId);
+                var view = _levelAvailabilityService.CreateView(levelConfig);
+                var icon = _spawner.Instantiate(levelIconPrefab, levelIconsParent);
+                icon.Initialize(view);
             }
         }
         

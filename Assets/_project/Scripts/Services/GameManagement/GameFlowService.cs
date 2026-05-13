@@ -1,8 +1,7 @@
 ﻿using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.SceneManagement;
-using _project.Scripts.UI;
+using _project.Scripts.UI.WindowControllers;
 using Cysharp.Threading.Tasks;
-using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
 
@@ -24,22 +23,22 @@ namespace _project.Scripts.Services.GameManagement
             _loadingScreen = loadingScreen; 
             _levelsDatabase = levelsDatabase;
         }
+
+        public async UniTask StartMainMenu()
+        {
+            await _loadingScreen.Show();
+            await _sceneLoaderService.LoadAsync(MainMenuSceneName);
+        }
         public async UniTask StartGameplay(string levelId)
         {
-            _loadingScreen.Show();
-            var currentLevelConfig = _levelsDatabase.GetLevelById(levelId);
+            var currentLevelConfig = _levelsDatabase.GetLevelById(levelId); 
+            await _loadingScreen.Show();
             using (LifetimeScope.Enqueue(builder =>
                    {
                        builder.RegisterInstance(currentLevelConfig);
                    }))
-            await _sceneLoaderService.LoadAsync(GameplaySceneName);
+                await _sceneLoaderService.LoadAsync(GameplaySceneName);
         }
 
-        public async UniTask StartMainMenu()
-        {
-            _loadingScreen.Show();
-            await _sceneLoaderService.LoadAsync(MainMenuSceneName);
-        }
-        
     }
 }

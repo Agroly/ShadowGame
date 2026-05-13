@@ -12,6 +12,8 @@ public static class SceneBootstrapper
     private static void Initialize()
     {
         ApplyBootScene(IsForceEnabled());
+        
+        EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
     }
 
     [MenuItem(MenuPath)]
@@ -34,6 +36,7 @@ public static class SceneBootstrapper
         if (enabled)
         {
             SceneAsset scene = AssetDatabase.LoadAssetAtPath<SceneAsset>(ScenePath);
+
             if (scene != null)
             {
                 EditorSceneManager.playModeStartScene = scene;
@@ -48,5 +51,20 @@ public static class SceneBootstrapper
     private static bool IsForceEnabled()
     {
         return EditorPrefs.GetBool(PrefKey, false);
+    }
+
+    private static void OnPlayModeStateChanged(PlayModeStateChange state)
+    {
+        if (state == PlayModeStateChange.ExitingEditMode)
+        {
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                AssetDatabase.SaveAssets();
+            }
+            else
+            {
+                EditorApplication.isPlaying = false;
+            }
+        }
     }
 }

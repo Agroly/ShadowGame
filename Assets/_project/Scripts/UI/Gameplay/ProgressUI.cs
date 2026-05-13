@@ -1,20 +1,31 @@
-﻿using UnityEngine;
+﻿using _project.Scripts.Gameplay;
+using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace _project.Scripts.UI.Gameplay
 {
     public class ProgressUI : MonoBehaviour
     {
+        [Inject] private RotationTracker _rotationTracker;
+        
         [SerializeField] private Image[] dots;
 
         [Header("Visual")]
         [SerializeField] private float minScale = 0.3f;
         [SerializeField] private Color inactiveColor = new Color(0.4f, 0.4f, 0.4f);
         [SerializeField] private Color activeColor = Color.white;
-        
-        
 
-        public void SetAccuracy(float accuracy)
+
+        public void OnEnable()
+        {
+            _rotationTracker.AccuracyChanged += SetAccuracy;
+        }
+        public void OnDisable()
+        {
+            _rotationTracker.AccuracyChanged -= SetAccuracy;
+        }
+        private void SetAccuracy(float accuracy)
         {
 
             var step = 100f / dots.Length;

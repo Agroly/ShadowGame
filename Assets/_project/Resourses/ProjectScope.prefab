@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5061572227429849282}
   - component: {fileID: 5110861935622148193}
   - component: {fileID: 3193277317492815821}
-  - component: {fileID: 8201652732497277859}
+  - component: {fileID: 678331013098276609}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8201652732497277859
+--- !u!114 &678331013098276609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,9 +113,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 276728383293390239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1914b71e49974eca922594c02ad5c360, type: 3}
+  m_Script: {fileID: 11500000, guid: fcc1275c999940cbae2e974ca0b56f2b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.LoadingScreen
+  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.WindowControllers.LoadingScreen
+  image: {fileID: 2987797434394369956}
 --- !u!1 &2294179276335416742
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &903082631398149972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -328,54 +329,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &4515162497581305200
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7060003875970520357}
-  - component: {fileID: 8930524916396569381}
-  m_Layer: 0
-  m_Name: LevelsDatabase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7060003875970520357
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4515162497581305200}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6017386979204701435}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8930524916396569381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4515162497581305200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354417f87e3e45399968d87432722725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.LevelManagement.LevelsDatabase
-  database:
-  - {fileID: 11400000, guid: 2e8bc109b726f32498ad3d5f691030f5, type: 2}
-  - {fileID: 11400000, guid: 6bd4be1748f20d246bce1bd4f723d5c4, type: 2}
-  - {fileID: 11400000, guid: 6a0f2f8bd67a2c141884467bd6d0fef8, type: 2}
 --- !u!1 &5553884080034522032
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +360,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4327072380485911730}
-  - {fileID: 7060003875970520357}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3182661592865966541
@@ -426,3 +378,4 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  levelsDatabase: {fileID: 11400000, guid: 3de21f74e17a07c4ca0ebfb4c8692d07, type: 2}
