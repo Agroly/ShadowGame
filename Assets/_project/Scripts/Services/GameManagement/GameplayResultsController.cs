@@ -37,13 +37,13 @@ namespace _project.Scripts.Services.GameManagement
         
         public async UniTask EndGame(Transform target, Quaternion rotation, CancellationToken token)
         {
+            _levelProgressService.RecordCompletion(_currentLevelConfig.LevelId, _timer.GetTime());
             _gameplayInput.Disable();
             await RotateGameObject(target, rotation, token);
             _timer.Stop();
             GameEnded?.Invoke(_timer.GetTime());
             await UniTask.Delay(2000, cancellationToken: token);
-            _levelProgressService.RecordCompletion(_currentLevelConfig.LevelId, _timer.GetTime());
-            _gameFlowService.StartMainMenu().Forget();
+            _gameFlowService.StartMainMenu(true).Forget();
         }
 
         private async UniTask RotateGameObject(Transform target, Quaternion rotation, CancellationToken token)

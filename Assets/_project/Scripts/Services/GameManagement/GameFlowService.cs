@@ -13,22 +13,29 @@ namespace _project.Scripts.Services.GameManagement
         private LoadingScreen _loadingScreen;
         private const string GameplaySceneName = "Gameplay";
         private const string MainMenuSceneName = "MainMenu";
+        private const string TutorialSceneName = "Tutorial";
 
         private LevelsDatabase _levelsDatabase;
             
         [Inject]
-        public void Construct(SceneLoaderService sceneLoaderService, LoadingScreen loadingScreen, LevelsDatabase levelsDatabase)
+        public void Construct(SceneLoaderService sceneLoaderService, LoadingScreen loadingScreen,
+            LevelsDatabase levelsDatabase)
         {
             _sceneLoaderService = sceneLoaderService;
             _loadingScreen = loadingScreen; 
             _levelsDatabase = levelsDatabase;
         }
 
-        public async UniTask StartMainMenu()
+        public async UniTask StartMainMenu(bool fromGame = false)
         {
             await _loadingScreen.Show();
-            await _sceneLoaderService.LoadAsync(MainMenuSceneName);
+            using (LifetimeScope.Enqueue(builder =>
+                   {
+                       builder.RegisterInstance(new MainMenuContext { FromGame = fromGame });
+                   }))
+                await _sceneLoaderService.LoadAsync(MainMenuSceneName);
         }
+        
         public async UniTask StartGameplay(string levelId)
         {
             var currentLevelConfig = _levelsDatabase.GetLevelById(levelId); 
@@ -37,7 +44,11 @@ namespace _project.Scripts.Services.GameManagement
                    {
                        builder.RegisterInstance(currentLevelConfig);
                    }))
-                await _sceneLoaderService.LoadAsync(GameplaySceneName);
+                if (currentLevelConfig.LevelId == "1")
+                    await _sceneLoaderService.LoadAsync(TutorialSceneName);
+                else 
+                    await _sceneLoaderService.LoadAsync(GameplaySceneName);
+           
         }
 
     }

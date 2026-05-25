@@ -8,27 +8,24 @@ namespace _project.Scripts.UI.LevelIcons
     public class LevelIconsFactory : MonoBehaviour
     {
         private LevelsDatabase _levelsDatabase;
-        private Spawner _spawner;
         private LevelAvailabilityService _levelAvailabilityService;
         
-        [SerializeField] private LevelIcon levelIconPrefab;
-        [SerializeField] private Transform levelIconsParent;
+        [SerializeField] private LevelIconsContainer iconsContainer;
         
         [Inject]
-        public void Construct(LevelsDatabase levelsDatabase, Spawner spawner, 
+        public void Construct(LevelsDatabase levelsDatabase, 
             LevelAvailabilityService levelAvailabilityService)
         {
             _levelsDatabase = levelsDatabase;
-            _spawner = spawner;
             _levelAvailabilityService = levelAvailabilityService;
         }
         public void SpawnLevelIcons()
         {
-            foreach (var levelConfig in _levelsDatabase.Levels)
+            foreach (var levelIcon in iconsContainer.container)
             {
-                var view = _levelAvailabilityService.CreateView(levelConfig);
-                var icon = _spawner.Instantiate(levelIconPrefab, levelIconsParent);
-                icon.Initialize(view);
+                var config = _levelsDatabase.GetLevelById(levelIcon.LevelId);
+                var view = _levelAvailabilityService.CreateView(config);
+                levelIcon.Initialize(view);
             }
         }
         

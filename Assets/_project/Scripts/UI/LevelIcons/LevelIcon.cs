@@ -16,19 +16,17 @@ namespace _project.Scripts.UI.LevelIcons
         [Inject] private GameFlowService _gameFlowService;
         [Inject] private LevelIconsSelectionManager _levelIconsSelectionManager;
         
-        [SerializeField] private TextMeshProUGUI levelId;
+        [field: SerializeField] public string LevelId { get; private set; }
+        [SerializeField] private TextMeshProUGUI levelIdText;
         [SerializeField] private TextMeshProUGUI questionMarkIcon;
         [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI bestTimeText;
+        [SerializeField] private GameObject unavailableSprite;
         
         private UIButton _button;
         private LevelView _view;
         private bool _selected;
         private CancellationTokenSource _cts = new CancellationTokenSource();
-        private void Awake()
-        {
-            _button = GetComponent<UIButton>();
-        }
         private void OnEnable()
         {
             _cts = new CancellationTokenSource();
@@ -56,7 +54,7 @@ namespace _project.Scripts.UI.LevelIcons
                 DOTween.Sequence()
                     .Append(transform.DOScale(0.85f, 0.15f)
                         .SetEase(Ease.InQuad))
-                    .Append(transform.DOScale(1.2f, 0.25f)
+                    .Append(transform.DOScale(1.1f, 0.25f)
                         .SetEase(Ease.OutBack))
                     .WithCancellation(_cts.Token),
 
@@ -89,16 +87,19 @@ namespace _project.Scripts.UI.LevelIcons
 
         public void Initialize(LevelView view)
         {
+            _button = GetComponent<UIButton>();
+            levelIdText.text = LevelId;
             _view = view;
-            levelId.text = _view.levelId;
             _button.interactable = _view.isAvailable;
+            unavailableSprite.SetActive(!_view.isAvailable);
             if (_view.isCompleted)
             {
                 icon.gameObject.SetActive(true);
                 icon.sprite = _view.sprite;
                 bestTimeText.text = $"{_view.time / 60:0}:{_view.time % 60:00}";
+                return;
             }
-            else questionMarkIcon.gameObject.SetActive(true);
+            questionMarkIcon.gameObject.SetActive(true);
         }
 
         private void OnButtonClick()

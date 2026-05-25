@@ -3,6 +3,7 @@ using System.Threading;
 using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.Input;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -18,6 +19,7 @@ namespace _project.Scripts.Gameplay
         private Transform _target;
 
         private bool _checkRotation;
+        private bool _canWin = true;
         private float _accuracy;
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
 
@@ -29,7 +31,7 @@ namespace _project.Scripts.Gameplay
             _gameplayInput.PrimaryStarted += OnPrimaryStarted;
             _gameplayInput.PrimaryEnded += OnPrimaryEnded;
         }
-
+        
         public void Dispose()
         {
             _gameplayInput.PrimaryStarted -= OnPrimaryStarted;
@@ -46,8 +48,13 @@ namespace _project.Scripts.Gameplay
         private void OnPrimaryEnded()
         {
             _checkRotation = false;
-            if (_accuracy == 100f)
+            if (_accuracy == 100f && _canWin)
                 EndGame(_cts.Token).Forget();
+        }
+
+        public void ChangeStatus(bool canWin)
+        {
+            _canWin = canWin;
         }
 
         public void SetTarget(Transform target)

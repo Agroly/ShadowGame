@@ -25,6 +25,7 @@ namespace _project.Scripts.Services.Scopes
             builder.Register<LocalProgressStorage>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<LevelProgressService>(Lifetime.Singleton);
             builder.Register<AssetLoaderService>(Lifetime.Singleton);
+            builder.Register<AccelerometerInput>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<LoadingScreen>();
             builder.RegisterComponent(levelsDatabase).AsSelf();
             builder.RegisterEntryPoint<ProjectEntryPoint>();

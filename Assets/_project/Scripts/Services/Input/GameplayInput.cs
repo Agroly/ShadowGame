@@ -52,6 +52,23 @@ namespace _project.Scripts.Services.Input
         {
             _map.Disable();
         }
+        public void EnablePrimaryOnly()
+        {
+            _primaryContact.Enable();
+            _primaryPosition.Enable();
+
+            _secondaryContact.Disable();
+            _secondaryPosition.Disable();
+        }
+
+        public void EnableSecondaryOnly()
+        {
+            _secondaryContact.Enable();
+            _secondaryPosition.Enable();
+
+            _primaryContact.Enable();
+            _primaryPosition.Enable();
+        }
 
 
         private void OnPrimaryStarted(InputAction.CallbackContext context)

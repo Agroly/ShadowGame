@@ -16,6 +16,7 @@ namespace _project.Scripts.Gameplay.GameObject
 
         private bool _selected;
         private bool _isDual;
+        private bool _isDualFirstMove;
         private Vector2 _prevPos;
         private float _prevAngle;
 
@@ -93,13 +94,23 @@ namespace _project.Scripts.Gameplay.GameObject
         {
             if (!_selected) return;
             _isDual = true;
-            _prevAngle = ScreenAngle(_input.PrimaryPosition, _input.SecondaryPosition);
+            _isDualFirstMove = true;
+            _angularVelocity = 0f;
         }
 
         private void OnSecondaryMoved(Vector2 secondaryPos)
         {
             if (!_selected || !_isDual) return;
+
             float angle = ScreenAngle(_input.PrimaryPosition, secondaryPos);
+
+            if (_isDualFirstMove)
+            {
+                _prevAngle = angle;
+                _isDualFirstMove = false;
+                return; 
+            }
+
             float delta = Mathf.DeltaAngle(_prevAngle, angle);
             _prevAngle = angle;
             _angularVelocity = -delta;

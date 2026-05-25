@@ -6,29 +6,26 @@ using UnityEngine.UI;
 
 namespace _project.Scripts.UI.Button
 {
-    [RequireComponent(typeof(UIButton))]
     [RequireComponent(typeof(Image))]
     public class ButtonAnimator : MonoBehaviour
     {
         [SerializeField] private float pressedScale = 0.9f;
         [SerializeField] private float duration = 0.15f;
-        [SerializeField] private float darken = 0.75f;
+        [SerializeField] private UIButton button;
+        
+        private Image _image;
 
-        private UIButton button;
-        private Image image;
+        private Vector3 _originalScale;
+        private Color _originalColor;
 
-        private Vector3 originalScale;
-        private Color originalColor;
-
-        private CancellationTokenSource animationCts;
+        private CancellationTokenSource _animationCts;
 
         private void Awake()
         {
-            button = GetComponent<UIButton>();
-            image = GetComponent<Image>();
+            _image = GetComponent<Image>();
 
-            originalScale = transform.localScale;
-            originalColor = image.color;
+            _originalScale = transform.localScale;
+            _originalColor = _image.color;
         }
 
         private void OnEnable()
@@ -48,44 +45,44 @@ namespace _project.Scripts.UI.Button
 
         private void OnPress()
         {
-            StartAnimation(originalScale * pressedScale, originalColor * darken);
+            StartAnimation(_originalScale * pressedScale);
         }
 
         private void OnRelease()
         {
-            StartAnimation(originalScale, originalColor);
+            StartAnimation(_originalScale);
         }
 
-        private void StartAnimation(Vector3 targetScale, Color targetColor)
+        private void StartAnimation(Vector3 targetScale)
         {
             KillAnimation();
 
-            animationCts = new CancellationTokenSource();
-            Animate(targetScale, targetColor, animationCts.Token).Forget();
+            _animationCts = new CancellationTokenSource();
+            Animate(targetScale, _animationCts.Token).Forget();
         }
 
-        private async UniTaskVoid Animate(Vector3 targetScale, Color targetColor, CancellationToken token)
+        private async UniTaskVoid Animate(Vector3 targetScale, CancellationToken token)
         {
-            await DOTween.Sequence()
-                .Join(transform.DOScale(targetScale, duration).SetEase(Ease.OutSine))
-                .Join(image.DOColor(targetColor, duration).SetEase(Ease.OutSine))
-                .ToUniTask(cancellationToken: token);
+            await _image.transform.DOScale(targetScale, duration)
+                    .SetEase(Ease.OutSine)
+                    .SetUpdate(true)
+                    .ToUniTask(cancellationToken: token);
         }
 
         private void KillAnimation()
         {
-            if (animationCts != null)
+            if (_animationCts != null)
             {
-                animationCts.Cancel();
-                animationCts.Dispose();
-                animationCts = null;
+                _animationCts.Cancel();
+                _animationCts.Dispose();
+                _animationCts = null;
             }
         }
 
         private void ResetVisual()
         {
-            transform.localScale = originalScale;
-            image.color = originalColor;
+            _image.transform.localScale = _originalScale;
+            _image.color = _originalColor;
         }
     }
 }

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace _project.Scripts.UI.WindowControllers
@@ -24,7 +26,22 @@ namespace _project.Scripts.UI.WindowControllers
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
         }
+        public override void InstantShow()
+        {
+            gameObject.SetActive(true);
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+            canvasGroup.interactable = true;
+        }
 
+        public override void InstantHide()
+        {
+            canvasGroup.alpha = 0f;
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.interactable = false;
+            gameObject.SetActive(false);
+        }
+        
         protected override async UniTask OnHide(CancellationToken token)
         {
             canvasGroup.blocksRaycasts = false;
@@ -38,9 +55,13 @@ namespace _project.Scripts.UI.WindowControllers
         {
             var dynamicDuration = duration * Mathf.Abs(targetAlpha - canvasGroup.alpha);
 
+
+
             await canvasGroup.DOFade(targetAlpha, dynamicDuration)
                 .SetEase(Ease.InOutCubic)
                 .ToUniTask(cancellationToken: token);
+
+
         }
     }
 }

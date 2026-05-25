@@ -13,6 +13,9 @@ namespace _project.Scripts.UI.WindowControllers
             await OnShow(token);
         }
 
+        public abstract void InstantShow();
+        public abstract void InstantHide();
+        
         public async UniTask Hide(CancellationToken token)
         {
             await OnHide(token);

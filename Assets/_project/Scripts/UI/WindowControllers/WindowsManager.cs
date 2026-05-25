@@ -1,34 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.Input;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
 
 namespace _project.Scripts.UI.WindowControllers
 {
-    public class WindowsManager : IDisposable
+    public class WindowsManager : MonoBehaviour
     {
-        private readonly UIInput _input;
+        [SerializeField] private UIWindow levelWindow;
+        [SerializeField] private UIWindow mainMenuWindow;
+        
+        private UIInput _input;
+        private MainMenuContext _context;
         
         private CancellationTokenSource _windowChangeCts;
-        
         private UIWindow _currentWindow;
         private readonly List<UIWindow> _history = new List<UIWindow>();
 
         [Inject]
-        public WindowsManager(UIInput input)
+        public void Construct(UIInput input, MainMenuContext context)
         {
             _input = input;
+            _context =  context;
+        }
+        private void Start()
+        {
+            if (_context.FromGame)
+            {
+                _currentWindow = levelWindow;
+                mainMenuWindow.InstantHide();
+                levelWindow.InstantShow();
+            }
+            else 
+                _currentWindow = mainMenuWindow;
+            
             _input.backAction.performed += OnBackPerformed;
         }
-
-        public void Setup(UIWindow startWindow)
-        {
-            _currentWindow = startWindow;
-        }
-
         private void OnBackPerformed(InputAction.CallbackContext context)
         {
             if (_history.Count > 0) 
@@ -81,7 +93,7 @@ namespace _project.Scripts.UI.WindowControllers
             }
         }
 
-        public void Dispose()
+        public void OnDestroy()
         {
             _input.backAction.performed -= OnBackPerformed;
             

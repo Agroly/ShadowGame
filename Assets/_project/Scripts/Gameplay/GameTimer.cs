@@ -37,7 +37,6 @@ namespace _project.Scripts.Gameplay
         {
             if (!_running || _paused)
                 return;
-            Debug.Log($"[GameTimer] {_elapsed}");
             _elapsed += Time.deltaTime;
         }
 
