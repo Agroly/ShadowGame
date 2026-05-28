@@ -28,6 +28,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6dab5fa0d113a3a4880331a61046a9db
+    m_Address: Achiements_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: a51ab73a518881544a49b1125ed19ba6, type: 2}
   m_SchemaSet:

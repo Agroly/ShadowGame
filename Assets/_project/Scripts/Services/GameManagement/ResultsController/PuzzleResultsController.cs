@@ -1,0 +1,49 @@
+﻿using System;
+using System.Threading;
+using _project.Scripts.Gameplay;
+using _project.Scripts.Services.GameManagement.ResultsController;
+using _project.Scripts.Services.Input;
+using _project.Scripts.Services.LevelManagement;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using Unity.VisualScripting;
+using UnityEngine;
+using VContainer;
+
+namespace _project.Scripts.Services.GameManagement
+{
+    public class PuzzleResultsController : IResultsController
+    {
+        private GameplayInput _gameplayInput;
+        private GameFlowService _gameFlowService;
+        private LevelProgressService _levelProgressService;
+        private LevelConfig _currentLevelConfig;
+        private GameTimer _timer;
+
+        public event Action<float> GameEnded;
+
+        [Inject]
+        public void Construct(
+            GameplayInput gameplayInput,
+            GameFlowService gameFlowService,
+            LevelProgressService levelProgressService,
+            LevelConfig currentLevelConfig, GameTimer timer)
+        {
+            _gameplayInput = gameplayInput;
+            _gameFlowService = gameFlowService;
+            _levelProgressService = levelProgressService;
+            _currentLevelConfig = currentLevelConfig;
+            _timer = timer;
+        }
+        
+        public async UniTask EndGame(Transform target = null, Quaternion rotation = new Quaternion(), CancellationToken token = default(CancellationToken))
+        {
+            _levelProgressService.RecordCompletion(_currentLevelConfig.LevelId, _timer.GetTime());
+            _gameplayInput.Disable();
+            _timer.Stop();
+            GameEnded?.Invoke(_timer.GetTime());
+            await UniTask.Delay(2000, cancellationToken: token);
+            _gameFlowService.StartMainMenu(true).Forget();
+        }
+    }
+}

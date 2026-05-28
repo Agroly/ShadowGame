@@ -1,11 +1,14 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using _project.Scripts.Achievements;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using VContainer;
 
 namespace _project.Scripts.UI.Button
 {
     [RequireComponent(typeof(UIButton))]
     public class ShareButton : MonoBehaviour
     {
+        [Inject] AchievementManager _achievementManager;
         [SerializeField] private string shareText = "Посмотри мой результат!";
         [SerializeField] private Canvas canvas;
         
@@ -29,6 +32,7 @@ namespace _project.Scripts.UI.Button
         private void OnShareClick()
         {
             ShareScreenshotAsync().Forget();
+            _achievementManager.Unlock("ScreenShot");
         }
 
         private async UniTaskVoid ShareScreenshotAsync()

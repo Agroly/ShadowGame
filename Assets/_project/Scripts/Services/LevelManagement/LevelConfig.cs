@@ -11,12 +11,13 @@ namespace _project.Scripts.Services.LevelManagement
         [SerializeField] private AssetReference _environmentScene;
         [SerializeField] private AssetReferenceGameObject _gameplayObjectPrefab;
         [SerializeField] private Sprite _sprite;
+        [SerializeField] private LevelType _levelType;
 
         public string LevelId => _levelId;
         public AssetReference EnvironmentScene => _environmentScene;
         public AssetReferenceGameObject GameplayObjectPrefab => _gameplayObjectPrefab;
         public Sprite Sprite => _sprite;
-
+        public LevelType LevelType => _levelType;
 #if UNITY_EDITOR
         private void OnValidate()
         {
@@ -26,5 +27,11 @@ namespace _project.Scripts.Services.LevelManagement
             }
         }
 #endif
+    }
+    public enum LevelType
+    {
+        Rotation,
+        RotationTutorial,
+        Puzzle
     }
 }

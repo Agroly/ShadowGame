@@ -17,7 +17,8 @@ namespace _project.Scripts.UI.LevelIcons
         [Inject] private LevelIconsSelectionManager _levelIconsSelectionManager;
         
         [field: SerializeField] public string LevelId { get; private set; }
-        [SerializeField] private TextMeshProUGUI levelIdText;
+        [field: SerializeField] public string LevelNumber { get; private set; }
+        [SerializeField] private TextMeshProUGUI levelNumberText;
         [SerializeField] private TextMeshProUGUI questionMarkIcon;
         [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI bestTimeText;
@@ -88,7 +89,7 @@ namespace _project.Scripts.UI.LevelIcons
         public void Initialize(LevelView view)
         {
             _button = GetComponent<UIButton>();
-            levelIdText.text = LevelId;
+            levelNumberText.text = LevelNumber;
             _view = view;
             _button.interactable = _view.isAvailable;
             unavailableSprite.SetActive(!_view.isAvailable);

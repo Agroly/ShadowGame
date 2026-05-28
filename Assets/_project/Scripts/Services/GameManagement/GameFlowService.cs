@@ -1,4 +1,5 @@
-﻿using _project.Scripts.Services.LevelManagement;
+﻿using System;
+using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.SceneManagement;
 using _project.Scripts.UI.WindowControllers;
 using Cysharp.Threading.Tasks;
@@ -11,9 +12,10 @@ namespace _project.Scripts.Services.GameManagement
     {
         private SceneLoaderService _sceneLoaderService;
         private LoadingScreen _loadingScreen;
-        private const string GameplaySceneName = "Gameplay";
+        private const string RotationSceneName = "GameplayRotation";
+        private const string PuzzleSceneName = "GameplayPuzzle";
         private const string MainMenuSceneName = "MainMenu";
-        private const string TutorialSceneName = "Tutorial";
+        private const string TutorialSceneName = "TutorialRotation";
 
         private LevelsDatabase _levelsDatabase;
             
@@ -44,10 +46,13 @@ namespace _project.Scripts.Services.GameManagement
                    {
                        builder.RegisterInstance(currentLevelConfig);
                    }))
-                if (currentLevelConfig.LevelId == "1")
-                    await _sceneLoaderService.LoadAsync(TutorialSceneName);
-                else 
-                    await _sceneLoaderService.LoadAsync(GameplaySceneName);
+                await _sceneLoaderService.LoadAsync(currentLevelConfig.LevelType switch
+                {
+                    LevelType.RotationTutorial => TutorialSceneName,
+                    LevelType.Rotation => RotationSceneName,
+                    LevelType.Puzzle => PuzzleSceneName,
+                    _ => throw new ArgumentOutOfRangeException()
+                });
            
         }
 

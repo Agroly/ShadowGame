@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: GameplayObjects
   m_GUID: e56da9e0144fa1840a6b1a1cc266121d
   m_SerializeEntries:
+  - m_GUID: 087e44a3aac2e854baf7a0fc8c9603e0
+    m_Address: PuzzleGO1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 647ce8611773863419a8f45bc54560c8
     m_Address: GO_2
     m_ReadOnly: 0

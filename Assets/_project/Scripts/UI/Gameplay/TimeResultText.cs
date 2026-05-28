@@ -1,4 +1,5 @@
 ﻿using _project.Scripts.Services.GameManagement;
+using _project.Scripts.Services.GameManagement.ResultsController;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
@@ -10,7 +11,7 @@ namespace _project.Scripts.UI.Gameplay
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TimeResultText : MonoBehaviour
     {
-        [Inject] private GameplayResultsController _gameplayResultsController;
+        [Inject] private IResultsController _gameplayResultsController;
         private TextMeshProUGUI _timeText;
         public void OnEnable()
         {

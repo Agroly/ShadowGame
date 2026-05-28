@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer.Unity;
 
 namespace _project.Scripts.Services.Input
 {
-    public sealed class GameplayInput : IDisposable
+    public sealed class GameplayInput : IDisposable, ITickable
     {
         public event Action<Vector2> PrimaryStarted;
         public event Action<Vector2> PrimaryMoved;
@@ -13,6 +14,14 @@ namespace _project.Scripts.Services.Input
         public event Action SecondaryStarted;
         public event Action<Vector2> SecondaryMoved;
         public event Action SecondaryEnded;
+        
+        public event Action<Vector2> Tapped;
+        public event Action<Vector2> HoldStarted;
+
+        private const float HoldThreshold = 0.3f;
+        private float _primaryPressTime;
+        private bool _holdFired;
+        private bool _isPressing;
 
         public Vector2 PrimaryPosition => _primaryPosition.ReadValue<Vector2>();
         public Vector2 SecondaryPosition => _secondaryPosition.ReadValue<Vector2>();
@@ -73,23 +82,44 @@ namespace _project.Scripts.Services.Input
 
         private void OnPrimaryStarted(InputAction.CallbackContext context)
         {
+            _primaryPressTime = Time.time;
+            _holdFired = false;
+            _isPressing = true;
             PrimaryStarted?.Invoke(PrimaryPosition);
-        }
-
-        private void OnPrimaryMoved(InputAction.CallbackContext context)
-        {
-            if (!IsPrimaryPressed)
-                return;
-
-            if (IsSecondaryPressed)
-                return;
-
-            PrimaryMoved?.Invoke(context.ReadValue<Vector2>());
         }
 
         private void OnPrimaryEnded(InputAction.CallbackContext context)
         {
+            if (_isPressing && !_holdFired && Time.time - _primaryPressTime < HoldThreshold)
+                Tapped?.Invoke(PrimaryPosition);
+
+            _isPressing = false;
             PrimaryEnded?.Invoke();
+        }
+
+        public void Tick()
+        {
+            if (!_isPressing || _holdFired) return;
+
+            if (Time.time - _primaryPressTime >= HoldThreshold)
+            {
+                _holdFired = true;
+                HoldStarted?.Invoke(PrimaryPosition);
+            }
+        }
+
+        private void OnPrimaryMoved(InputAction.CallbackContext context)
+        {
+            if (!IsPrimaryPressed) return;
+            if (IsSecondaryPressed) return;
+            
+            if (!_holdFired && Time.time - _primaryPressTime >= HoldThreshold)
+            {
+                _holdFired = true;
+                HoldStarted?.Invoke(PrimaryPosition);
+            }
+
+            PrimaryMoved?.Invoke(context.ReadValue<Vector2>());
         }
 
         private void OnSecondaryStarted(InputAction.CallbackContext context)

@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 7392321767240541974}
   - component: {fileID: 8864120312877546741}
   m_Layer: 5
-  m_Name: LevelIDText
+  m_Name: LevelNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,7 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.LevelIcons.LevelIcon
   <LevelId>k__BackingField: 1
-  levelIdText: {fileID: 8864120312877546741}
+  <LevelNumber>k__BackingField: 
+  levelNumberText: {fileID: 8864120312877546741}
   questionMarkIcon: {fileID: 1468092616057369481}
   icon: {fileID: 8244079092792437010}
   bestTimeText: {fileID: 6686119248287229259}
