@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b214298ec2d96cb4da7773354f40c598, type: 2}
   _puzzleLevels:
   - {fileID: 11400000, guid: b9c80df227e4c0c48971e0345b8e4a01, type: 2}
+  - {fileID: 11400000, guid: 86d99d394dd2105438738770a28e8f04, type: 2}

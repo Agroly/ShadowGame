@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86f6f279277667445834d5656989cbed
+    m_Address: PuzzleGO2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a53f86f4c4c684e46a7586dd503cf3ea
     m_Address: GO_1
     m_ReadOnly: 0

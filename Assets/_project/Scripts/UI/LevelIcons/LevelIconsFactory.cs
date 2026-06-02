@@ -1,4 +1,5 @@
-﻿using _project.Scripts.Services.AssetsManagement;
+﻿using System.Collections.Generic;
+using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.Services.LevelManagement;
 using UnityEngine;
 using VContainer;
@@ -10,7 +11,7 @@ namespace _project.Scripts.UI.LevelIcons
         private LevelsDatabase _levelsDatabase;
         private LevelAvailabilityService _levelAvailabilityService;
         
-        [SerializeField] private LevelIconsContainer iconsContainer;
+        [SerializeField] private List<LevelIconsContainer> iconsContainer;
         
         [Inject]
         public void Construct(LevelsDatabase levelsDatabase, 
@@ -21,11 +22,14 @@ namespace _project.Scripts.UI.LevelIcons
         }
         public void SpawnLevelIcons()
         {
-            foreach (var levelIcon in iconsContainer.container)
+            foreach (var levelIconsContainer in iconsContainer)
             {
-                var config = _levelsDatabase.GetLevelById(levelIcon.LevelId);
-                var view = _levelAvailabilityService.CreateView(config);
-                levelIcon.Initialize(view);
+                foreach (var levelIcon in levelIconsContainer.container)
+                {
+                    var config = _levelsDatabase.GetLevelById(levelIcon.LevelId);
+                    var view = _levelAvailabilityService.CreateView(config);
+                    levelIcon.Initialize(view);
+                }
             }
         }
         
