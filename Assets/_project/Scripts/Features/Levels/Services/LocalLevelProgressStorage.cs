@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _project.Scripts.Services.LevelManagement
 {
-    public class LocalProgressStorage : IProgressStorage
+    public class LocalLevelProgressStorage : IProgressStorage
     {
         private readonly string _path =
             Path.Combine(Application.persistentDataPath, "progress.json");

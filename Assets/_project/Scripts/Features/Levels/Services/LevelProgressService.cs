@@ -27,10 +27,11 @@ namespace _project.Scripts.Services.LevelManagement
                 _cache[levelId] = progress;
             }
 
+            if (progress.IsCompleted && time >= progress.BestTime)
+                return;
+            
             progress.IsCompleted = true;
-
-            if (progress.BestTime <= 0f || time < progress.BestTime)
-                progress.BestTime = time;
+            progress.BestTime = time;
 
             Save();
         }

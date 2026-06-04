@@ -29,7 +29,7 @@ namespace _project.Scripts.Services.Scopes
             builder.Register<LocalizationService>(Lifetime.Singleton);
             builder.Register<GameFlowService>(Lifetime.Singleton);
             
-            builder.Register<LocalProgressStorage>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<LocalLevelProgressStorage>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<LevelProgressService>(Lifetime.Singleton);
             
             builder.Register<AssetLoaderService>(Lifetime.Singleton);
