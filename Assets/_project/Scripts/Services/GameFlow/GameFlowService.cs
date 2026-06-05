@@ -48,12 +48,12 @@ namespace _project.Scripts.Services.GameManagement
                    }))
                 await _sceneLoaderService.LoadAsync(currentLevelConfig.LevelType switch
                 {
+                    //Выбор сцены геймплея
                     LevelType.RotationTutorial => TutorialSceneName,
                     LevelType.Rotation => RotationSceneName,
                     LevelType.Puzzle => PuzzleSceneName,
                     _ => throw new ArgumentOutOfRangeException()
                 });
-           
         }
 
     }

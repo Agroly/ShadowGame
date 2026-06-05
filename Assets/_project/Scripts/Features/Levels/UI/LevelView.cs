@@ -12,6 +12,7 @@ namespace _project.Scripts.UI.LevelIcons
         
         public LevelView(Sprite sprite, string levelId, bool isCompleted, bool isAvailable,  float time)
         {
+            // Создание объекта
             this.sprite = sprite;
             this.levelId = levelId;
             this.isCompleted = isCompleted;

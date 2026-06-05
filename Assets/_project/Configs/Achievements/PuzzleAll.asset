@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8779e1ea61084525a6e0f7db02b5254b, type: 3}
   m_Name: PuzzleAll
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Gameplay.Achievements.AchievementConfig
-  Id: PuzzleAll
-  Sprite: {fileID: 21300000, guid: bb3599cdc9c38554aa92a99dea47cbf8, type: 3}
-  Title:
+  _id: PuzzleAll
+  _sprite: {fileID: 0}
+  _title:
     m_TableReference:
-      m_TableCollectionName: GUID:1b99c58f0c06feb4391b009425fe490f
+      m_TableCollectionName: 
     m_TableEntryReference:
-      m_KeyId: 11915177984
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  Description:
+  _description:
     m_TableReference:
-      m_TableCollectionName: GUID:1b99c58f0c06feb4391b009425fe490f
+      m_TableCollectionName: 
     m_TableEntryReference:
-      m_KeyId: 296565813248
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

@@ -12,7 +12,7 @@ using VContainer;
 
 namespace _project.Scripts.Services.GameManagement
 {
-    public class GameplayResultsController : IResultsController
+    public class RotationResultsController : IResultsController
     {
         private GameplayInput _gameplayInput;
         private GameFlowService _gameFlowService;

@@ -15,7 +15,7 @@ namespace _project.Scripts.Gameplay
         public event Action<float> AccuracyChanged;
 
         private readonly GameplayInput _gameplayInput;
-        private readonly GameplayResultsController _gameplayResultsController;
+        private readonly RotationResultsController _rotationResultsController;
         private Transform _target;
 
         private bool _checkRotation;
@@ -24,10 +24,10 @@ namespace _project.Scripts.Gameplay
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
 
         [Inject]
-        public RotationTracker(GameplayInput gameplayInput, GameplayResultsController gameplayResultsController)
+        public RotationTracker(GameplayInput gameplayInput, RotationResultsController rotationResultsController)
         {
             _gameplayInput = gameplayInput;
-            _gameplayResultsController = gameplayResultsController;
+            _rotationResultsController = rotationResultsController;
             _gameplayInput.PrimaryStarted += OnPrimaryStarted;
             _gameplayInput.PrimaryEnded += OnPrimaryEnded;
         }
@@ -97,7 +97,7 @@ namespace _project.Scripts.Gameplay
                 ? Quaternion.identity
                 : Quaternion.Euler(0f, 180f, 0f);
 
-            await _gameplayResultsController.EndGame(_target, bestRotation, token);
+            await _rotationResultsController.EndGame(_target, bestRotation, token);
         }
     }
 }

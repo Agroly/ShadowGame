@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6a2a1676cd4169a2a896ef8d892a55, type: 3}
+  m_Name: PuzzleLevel_3
+  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.LevelManagement.LevelConfig
+  _levelId: 11
+  _environmentScene:
+    m_AssetGUID: 884d93c11aeac3748b58231bd49be8de
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  _gameplayObjectPrefab:
+    m_AssetGUID: 541cf0471ac95e148aff50b34faf0dfc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _sprite: {fileID: 21300000, guid: 0fb94fbfe8d05ed42bc25d109debb539, type: 3}
+  _levelType: 2

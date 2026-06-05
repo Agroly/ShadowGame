@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8779e1ea61084525a6e0f7db02b5254b, type: 3}
   m_Name: PuzzleTutorial
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Gameplay.Achievements.AchievementConfig
-  Id: PuzzleTutorial
-  Sprite: {fileID: 21300000, guid: 338c350bdc74e7349b60ad29119cce1d, type: 3}
-  Title:
+  _id: PuzzleTutorial
+  _sprite: {fileID: 21300000, guid: 338c350bdc74e7349b60ad29119cce1d, type: 3}
+  _title:
     m_TableReference:
       m_TableCollectionName: GUID:1b99c58f0c06feb4391b009425fe490f
     m_TableEntryReference:
@@ -23,7 +23,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  Description:
+  _description:
     m_TableReference:
       m_TableCollectionName: GUID:1b99c58f0c06feb4391b009425fe490f
     m_TableEntryReference:

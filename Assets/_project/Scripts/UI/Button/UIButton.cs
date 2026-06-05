@@ -19,13 +19,15 @@ namespace _project.Scripts.UI.Button
         public UnityEvent onRelease;
 
         private bool _isPressed;
-        
+        private bool _holdTriggered;
+
         private CancellationTokenSource _holdCts;
 
         private void OnDisable()
         {
             CancelHold();
             _isPressed = false;
+            _holdTriggered = false;
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -33,16 +35,21 @@ namespace _project.Scripts.UI.Button
             if (!interactable) return;
 
             _isPressed = true;
+            _holdTriggered = false;
+
             onPress?.Invoke();
-            
+
             StartHoldDetection();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             if (!_isPressed) return;
-            
-            onClick?.Invoke();
+
+            if (!_holdTriggered && !eventData.dragging)
+            {
+                onClick?.Invoke();
+            }
 
             Release();
         }
@@ -64,7 +71,7 @@ namespace _project.Scripts.UI.Button
         private void StartHoldDetection()
         {
             CancelHold();
-            
+
             _holdCts = new CancellationTokenSource();
             HandleHoldAsync(_holdCts.Token).Forget();
         }
@@ -73,8 +80,15 @@ namespace _project.Scripts.UI.Button
         {
             try
             {
-                await UniTask.Delay((int)(holdDelay * 1000), delayType: DelayType.UnscaledDeltaTime, cancellationToken: token);
-                
+                await UniTask.Delay(
+                    (int)(holdDelay * 1000),
+                    delayType: DelayType.UnscaledDeltaTime,
+                    cancellationToken: token
+                );
+
+                if (!_isPressed) return;
+
+                _holdTriggered = true;
                 onHold?.Invoke();
             }
             catch (System.OperationCanceledException)

@@ -22,7 +22,7 @@ namespace _project.Scripts.Services.Scopes
         builder.Register<Spawner>(Lifetime.Singleton);
         builder.Register<TouchSelectionService>(Lifetime.Singleton);
         builder.RegisterInstance(gameObjectSpawnAnimation);
-        builder.Register<GameplayResultsController>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+        builder.Register<RotationResultsController>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
         builder.RegisterEntryPoint<GameTimer>().AsSelf();
         builder.RegisterComponentInHierarchy<PauseWindow>();
         builder.RegisterEntryPoint<RotationTracker>().AsSelf();
