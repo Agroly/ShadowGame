@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: EventLevel
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: EventLevel
+  m_GUID: 1a12f29668a780c40b513a493f9faf6e
+  m_SerializeEntries:
+  - m_GUID: 2ca5a00e35fd7594ea132ed818faa2e4
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Env_NewYear.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3307408575c533e4ea6898684a6784b9
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Event.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 47d16c251d4b4cc499e6081996ca1b63
+    m_Address: Assets/_project/Configs/Levels/EventLevel/NewYear/GO_Tree.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 599f7bac039e19a4f820a1df3259c20b
+    m_Address: Assets/_project/Configs/Levels/EventLevel/MerryChristmas/MCPuzzle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be2e08bda3cc81a44afbd60680a11854
+    m_Address: Assets/_project/Configs/Levels/EventLevel/EventLevelConfig.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a51ab73a518881544a49b1125ed19ba6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 33d9fa338c8df4944a4fd0ffdb0adb0f, type: 2}
+    - {fileID: 11400000, guid: a7c9895dc152d454ca9c12bdbad2be27, type: 2}

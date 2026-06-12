@@ -163,6 +163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key LightEnv
       objectReference: {fileID: 0}
+    - target: {fileID: 4986510810306917988, guid: 33c29021dabdb5a4eb727eb337045787, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.298
+      objectReference: {fileID: 0}
     - target: {fileID: 5415732971570720451, guid: 33c29021dabdb5a4eb727eb337045787, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -15,9 +15,9 @@ MonoBehaviour:
   m_DefaultGroup: 8781156a88b8e1446b6ec38ff691bf02
   m_currentHash:
     serializedVersion: 2
-    Hash: 3333aca586539e4e63b49eaa87d7dc0f
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
   m_InternalIdNamingMode: 0
@@ -52,10 +52,10 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: 5ed1ddcbc926bb5458d7aa8d2d706c94
   m_RemoteCatalogLoadPath:
-    m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+    m_Id: b58eae4432280ab458fa8ab0c19d2b78
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
@@ -63,11 +63,19 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 614cb7a367724534b885ad7b62d5514e, type: 2}
   - {fileID: 11400000, guid: cf17644dbb537ba4fb5ce43a89ff1eae, type: 2}
+  - {fileID: 11400000, guid: 277e2a2f5ce7c264ca3ea9917de9c566, type: 2}
+  - {fileID: 11400000, guid: 6793b8746c7bcc741bcc01ad236a6d19, type: 2}
   - {fileID: 11400000, guid: 5160589ba7025b2449dc727b1afb809e, type: 2}
+  - {fileID: 11400000, guid: 00f252eb080aa6a4484138a862aaafa6, type: 2}
+  - {fileID: 11400000, guid: a162edf142ccbaa479d0db3b1f882b26, type: 2}
   - {fileID: 11400000, guid: 0a81c552283bc4c41a572a2fcd4debd4, type: 2}
+  - {fileID: 11400000, guid: a68f2f385db414949898d41a1b09f57c, type: 2}
   - {fileID: 11400000, guid: 014349180d3caa8429f4e6aae35f3d0a, type: 2}
+  - {fileID: 11400000, guid: 49c77991cce311440b85ad365b345f97, type: 2}
   - {fileID: 11400000, guid: f87a7da3ff1c3ff4e8be5821ec4603c9, type: 2}
+  - {fileID: 11400000, guid: be5b276d4afd82c40a1a5d35c3f49515, type: 2}
   - {fileID: 11400000, guid: 427965ef03f5f3f4790d91f3ab97ea02, type: 2}
+  - {fileID: 11400000, guid: 25cd8b8d13626134ba4d4428481d04c8, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -86,7 +94,7 @@ MonoBehaviour:
       - m_Id: b0c33642b7fd98746b1023170c3984d2
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: b58eae4432280ab458fa8ab0c19d2b78
-        m_Value: <undefined>
+        m_Value: 'https://storage.yandexcloud.net/addressables.anamorphosis/[BuildTarget]'
     m_ProfileEntryNames:
     - m_Id: 25013fde24b5490418b0df1950bcc5e5
       m_Name: BuildTarget

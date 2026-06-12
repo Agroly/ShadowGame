@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.LevelManagement.LevelConfig
   _levelId: 7
   _environmentScene:
-    m_AssetGUID: 884d93c11aeac3748b58231bd49be8de
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
-  _gameplayObjectPrefab:
-    m_AssetGUID: 647ce8611773863419a8f45bc54560c8
+    m_AssetGUID: 2eec9a99543df8045bcc61cb9728e925
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  _sprite: {fileID: 21300000, guid: 981c45b3692567f48a28237a8f0832e5, type: 3}
+  _gameplayObjectPrefab:
+    m_AssetGUID: 2e10bed4b0e5cff45a325dcae23352ab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _sprite: {fileID: 21300000, guid: 6eb228c1f445a894997f89756c2707a4, type: 3}
+  _levelType: 0

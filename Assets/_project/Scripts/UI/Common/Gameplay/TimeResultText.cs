@@ -21,7 +21,9 @@ namespace _project.Scripts.UI.Gameplay
 
         private void ShowResults(float time)
         {
-            _timeText.text = $"{time / 60:0}:{time % 60:00}";
+            int minutes = Mathf.FloorToInt(time / 60f);
+            int seconds = Mathf.FloorToInt(time % 60f);
+            _timeText.text = $"{minutes:0}:{seconds:00}";
             AnimateText().Forget();
         }
         private async UniTask AnimateText()

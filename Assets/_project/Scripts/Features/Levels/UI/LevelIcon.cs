@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using _project.Scripts.Services.GameFlow;
 using _project.Scripts.Services.GameManagement;
 using _project.Scripts.UI.Button;
 using Cysharp.Threading.Tasks;
@@ -97,7 +98,9 @@ namespace _project.Scripts.UI.LevelIcons
             {
                 icon.gameObject.SetActive(true);
                 icon.sprite = _view.sprite;
-                bestTimeText.text = $"{_view.time / 60:0}:{_view.time % 60:00}";
+                int minutes = Mathf.FloorToInt(_view.time  / 60f);
+                int seconds = Mathf.FloorToInt(_view.time % 60f);
+                bestTimeText.text = $"{minutes:0}:{seconds:00}";
                 return;
             }
             questionMarkIcon.gameObject.SetActive(true);

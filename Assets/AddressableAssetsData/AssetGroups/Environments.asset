@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: Environments
   m_GUID: 1701f1e3a0c0534469c9f53b39731882
   m_SerializeEntries:
+  - m_GUID: 2eec9a99543df8045bcc61cb9728e925
+    m_Address: Env_nature
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 884d93c11aeac3748b58231bd49be8de
     m_Address: Env_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e86284b0f9d004e46b341cb32ccf917d
+    m_Address: Env_KidsRoom
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

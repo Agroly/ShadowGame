@@ -20,9 +20,10 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   _gameplayObjectPrefab:
-    m_AssetGUID: 647ce8611773863419a8f45bc54560c8
+    m_AssetGUID: a6e3fa78a0e651a4e9681e70ad128700
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  _sprite: {fileID: 21300000, guid: 981c45b3692567f48a28237a8f0832e5, type: 3}
+  _sprite: {fileID: 21300000, guid: 6c41726dc3779754bb8f70b5c57caac1, type: 3}
+  _levelType: 0

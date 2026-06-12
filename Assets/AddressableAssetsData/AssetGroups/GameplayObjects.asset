@@ -20,8 +20,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d5f91e045be1b64c8817b4d9817c62f
+    m_Address: RO_GO_5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e10bed4b0e5cff45a325dcae23352ab
+    m_Address: RO_GO_7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e3b13f19628388408e7d16b847eebfb
+    m_Address: RO_GO_6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 541cf0471ac95e148aff50b34faf0dfc
     m_Address: PuzzleGO3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ac319f2c5f23644f8922fb142ec4317
+    m_Address: RO_GO3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -30,13 +50,48 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74cc784a874c4f24cb278098f5ea3928
+    m_Address: RO_GO_8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86f6f279277667445834d5656989cbed
     m_Address: PuzzleGO2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 950d726d60acd9041ab9327927bdf418
+    m_Address: PuzzleGO8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3090fa76eda5c94ab925ce61f0d8ef8
+    m_Address: PuzzleGO5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a53f86f4c4c684e46a7586dd503cf3ea
     m_Address: GO_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6e3fa78a0e651a4e9681e70ad128700
+    m_Address: RO_GO4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df95db2d4b9067449bd28311f8cbf715
+    m_Address: PuzzleGO4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec0ce9486a54af0478b0886902768ee3
+    m_Address: PuzzleGO6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1d553de758a28640bac801c697f22cf
+    m_Address: PuzzleGO7
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

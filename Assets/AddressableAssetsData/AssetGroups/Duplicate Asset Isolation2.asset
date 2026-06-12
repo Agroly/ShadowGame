@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Duplicate Asset Isolation2
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Duplicate Asset Isolation2
+  m_GUID: 80c1ca60d54f2d54baab4fc0b0fc597d
+  m_SerializeEntries:
+  - m_GUID: 1fbb40c7a9109854a80a257d81e21fd4
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Models/MergedBake_Bake1_PBR_Normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 20bfd9cac5029f646b7b527fd5e9f1d8
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Models/MergedBake_Bake1_PBR_Roughness.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59ef82593b0f7d04a991a542cfb77f6a
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Models/MergedBake_Bake1_PBR_Diffuse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a3ccba12f3d85840b1a68ef7993386d
+    m_Address: "Assets/_project/Configs/Levels/EventLevel/Models/\u041A\u0430\u043C\u0438\u043D.mat"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e0c9b001fe7287428fdeb76de331ed5
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Models/NewYearRoom.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8341145915bb5c54aae47c4ddec91ca1
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Models/Wood wall.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b02445e35d0914641aa13651e682ab37
+    m_Address: Assets/_project/Configs/Levels/EventLevel/Models/NewYears.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a51ab73a518881544a49b1125ed19ba6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f62c77d643eb58349800517de289134d, type: 2}
+    - {fileID: 11400000, guid: 97a85aee009911e43bf35fdcdfb0db5a, type: 2}

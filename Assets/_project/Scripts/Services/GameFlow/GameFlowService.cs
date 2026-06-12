@@ -1,4 +1,5 @@
 ﻿using System;
+using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.SceneManagement;
 using _project.Scripts.UI.WindowControllers;
@@ -6,7 +7,7 @@ using Cysharp.Threading.Tasks;
 using VContainer;
 using VContainer.Unity;
 
-namespace _project.Scripts.Services.GameManagement
+namespace _project.Scripts.Services.GameFlow
 {
     public class GameFlowService
     {
@@ -50,6 +51,21 @@ namespace _project.Scripts.Services.GameManagement
                 {
                     //Выбор сцены геймплея
                     LevelType.RotationTutorial => TutorialSceneName,
+                    LevelType.Rotation => RotationSceneName,
+                    LevelType.Puzzle => PuzzleSceneName,
+                    _ => throw new ArgumentOutOfRangeException()
+                });
+        }
+
+        public async UniTask StartGameplay(LevelConfig currentLevelConfig)
+        {
+            await _loadingScreen.Show();
+            using (LifetimeScope.Enqueue(builder =>
+                   {
+                       builder.RegisterInstance(currentLevelConfig);
+                   }))
+                await _sceneLoaderService.LoadAsync(currentLevelConfig.LevelType switch
+                {
                     LevelType.Rotation => RotationSceneName,
                     LevelType.Puzzle => PuzzleSceneName,
                     _ => throw new ArgumentOutOfRangeException()

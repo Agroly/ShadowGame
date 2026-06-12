@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Duplicate Asset Isolation1
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Duplicate Asset Isolation1
+  m_GUID: 565326c52f63b3a4cb96c09454afcd31
+  m_SerializeEntries:
+  - m_GUID: 1f19c84ef604a9046a39486aa502f8ff
+    m_Address: Assets/_project/Visuals/Sprites/MainMenu/Button1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3081104d51cf67f408f983220931cd96
+    m_Address: Assets/_project/Visuals/Sprites/MainMenu/gradient.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 355df017788dccc478a8185dc692f085
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/OrangePaint.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 415e1261def1f2f47a0fa8c7b6ed930f
+    m_Address: Assets/_project/Visuals/Sprites/MainMenu/RoundedUI1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56303667e32098b42810e4d63672158b
+    m_Address: Assets/_project/Visuals/Materials/Sprite-Lit.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63aa3b9e91cc0794f9fa34e86288f204
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/GreenPaint.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 754c555942942774682740141d344afa
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/KidsRoom.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7da5dfc33e29fe34c8149aa403f4756d
+    m_Address: Assets/_project/Visuals/Sprites/MainMenu/Logo.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93acb3035a6cd304a9dc30b467398855
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/PurplePaint.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9cfd8b3ca2c3dfd428b23a9b80981768
+    m_Address: Assets/_project/Visuals/Sprites/MainMenu/MainMenu.spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d7f1ce9ae4d66346a2eddb62ebd192c
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/YellowPaint.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f16310534c72ec4aa1fd1ac1f424a55
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/Kids Fabric.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a80a9190d5f833c4cb71acdce2201dd2
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/BluePaint.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0ee04ccc809bf049a7d271ef5680e30
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/fabric_06_color.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d24b4509bf8d1f3449d7cfebe93171bf
+    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/RedPaint.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e260cfa7296ee7642b167f1eb5be5023
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Lit-Default.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a51ab73a518881544a49b1125ed19ba6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 91849d29fd3e3c84aa4f07ace0d0814a, type: 2}
+    - {fileID: 11400000, guid: d334b2c6653d2a546910867925674187, type: 2}

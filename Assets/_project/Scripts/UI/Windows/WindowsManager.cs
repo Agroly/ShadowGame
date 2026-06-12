@@ -1,19 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.Input;
+using _project.Scripts.Services.LevelManagement;
+using _project.Scripts.UI.Button;
+using _project.Scripts.UI.WindowControllers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 using VContainer;
 
-namespace _project.Scripts.UI.WindowControllers
+namespace _project.Scripts.UI.Windows
 {
     public class WindowsManager : MonoBehaviour
     {
+        [Inject] private EventLevelStartupService _eventLevelStartupService;
+        [Inject] private Spawner _spawner;
+        
         [SerializeField] private UIWindow levelWindow;
         [SerializeField] private UIWindow mainMenuWindow;
+        [SerializeField] private UIWindow eventLevelWindow;
+        [SerializeField] private AssetReference eventLevelConfigReference;
+        [SerializeField] private EventLevelIcon eventLevelIcon;
         
         private UIInput _input;
         private MainMenuContext _context;
@@ -23,24 +34,41 @@ namespace _project.Scripts.UI.WindowControllers
         private readonly List<UIWindow> _history = new List<UIWindow>();
 
         [Inject]
-        public void Construct(UIInput input, MainMenuContext context)
+        public void Construct(UIInput input, MainMenuContext context, Spawner spawner)
         {
             _input = input;
             _context =  context;
         }
-        private void Start()
+        
+        public async UniTask ShowStartWindow()
         {
+            var result = await _eventLevelStartupService.Check(eventLevelConfigReference, eventLevelWindow.transform);
+            eventLevelIcon.Initialize(result);
+            
             if (_context.FromGame)
             {
                 _currentWindow = levelWindow;
                 mainMenuWindow.InstantHide();
                 levelWindow.InstantShow();
             }
-            else 
-                _currentWindow = mainMenuWindow;
-            
+            else
+            {
+                if (result.Status == EventLevelStartupStatus.Uncompleted)
+                {
+                    _currentWindow = eventLevelWindow;
+                    mainMenuWindow.InstantHide();
+                    eventLevelWindow.InstantShow();
+                }
+                else
+                {
+                    _currentWindow = mainMenuWindow;
+                    mainMenuWindow.InstantShow();
+                }
+            }
+
             _input.backAction.performed += OnBackPerformed;
         }
+        
         private void OnBackPerformed(InputAction.CallbackContext context)
         {
             if (_history.Count > 0) 

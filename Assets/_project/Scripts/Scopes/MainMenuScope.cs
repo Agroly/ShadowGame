@@ -4,6 +4,7 @@ using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.Scopes.EntryPoints;
 using _project.Scripts.UI.LevelIcons;
 using _project.Scripts.UI.WindowControllers;
+using _project.Scripts.UI.Windows;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -16,6 +17,8 @@ namespace _project.Scripts.Services.Scopes
         {
             builder.RegisterComponentInHierarchy<WindowsManager>();
             builder.RegisterComponentInHierarchy<LevelIconsFactory>();
+            builder.Register<EventLevelAccessibilityService>(Lifetime.Singleton);
+            builder.Register<EventLevelStartupService>(Lifetime.Singleton);
             builder.Register<Spawner>(Lifetime.Singleton);
             builder.Register<LevelAvailabilityService>(Lifetime.Singleton);
             builder.Register<LevelIconsSelectionManager>(Lifetime.Singleton);
