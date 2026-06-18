@@ -6,6 +6,9 @@ namespace _project.Scripts.Services.AssetsManagement
 {
     public class AudioService : MonoBehaviour
     {
+        private const string MusicEnabledKey = "MusicEnabled";
+        private const string SoundsEnabledKey = "SoundsEnabled";
+
         [Header("Audio Sources")]
         [SerializeField] private AudioSource musicSource;
         [SerializeField] private AudioSource clickSource;
@@ -17,9 +20,50 @@ namespace _project.Scripts.Services.AssetsManagement
         [SerializeField] private float fadeDuration = 1f;
 
         private Tween _musicTween;
+        private AudioClip _currentMusicClip;
+
+        public bool IsMusicEnabled { get; private set; }
+        public bool IsSoundsEnabled { get; private set; }
+
+        private void Awake()
+        {
+            IsMusicEnabled = PlayerPrefs.GetInt(MusicEnabledKey, 1) == 1;
+            IsSoundsEnabled = PlayerPrefs.GetInt(SoundsEnabledKey, 1) == 1;
+
+            ApplyMusicState();
+        }
+
+        public void ToggleMusic()
+        {
+            SetMusicEnabled(!IsMusicEnabled);
+        }
+
+        public void ToggleSounds()
+        {
+            SetSoundsEnabled(!IsSoundsEnabled);
+        }
+
+        public void SetMusicEnabled(bool enabled)
+        {
+            IsMusicEnabled = enabled;
+            PlayerPrefs.SetInt(MusicEnabledKey, enabled ? 1 : 0);
+            PlayerPrefs.Save();
+
+            ApplyMusicState();
+        }
+
+        public void SetSoundsEnabled(bool enabled)
+        {
+            IsSoundsEnabled = enabled;
+            PlayerPrefs.SetInt(SoundsEnabledKey, enabled ? 1 : 0);
+            PlayerPrefs.Save();
+        }
 
         public void PlayClick()
         {
+            if (!IsSoundsEnabled)
+                return;
+
             if (clickSource == null || clickContainer == null)
                 return;
 
@@ -42,6 +86,11 @@ namespace _project.Scripts.Services.AssetsManagement
             if (clip == null || musicSource == null)
                 return;
 
+            _currentMusicClip = clip;
+
+            if (!IsMusicEnabled)
+                return;
+
             if (musicSource.clip == clip && musicSource.isPlaying)
                 return;
 
@@ -57,7 +106,7 @@ namespace _project.Scripts.Services.AssetsManagement
                 _musicTween = musicSource
                     .DOFade(1f, fadeDuration)
                     .SetUpdate(true);
-            
+
                 return;
             }
 
@@ -77,6 +126,27 @@ namespace _project.Scripts.Services.AssetsManagement
                         .DOFade(1f, fadeDuration)
                         .SetUpdate(true);
                 });
+        }
+
+        private void ApplyMusicState()
+        {
+            if (musicSource == null)
+                return;
+
+            _musicTween?.Kill();
+
+            if (IsMusicEnabled)
+            {
+                if (_currentMusicClip != null && !musicSource.isPlaying)
+                    PlayMusic(_currentMusicClip);
+                else
+                    musicSource.volume = 1f;
+            }
+            else
+            {
+                musicSource.volume = 0f;
+                musicSource.Pause();
+            }
         }
     }
 }

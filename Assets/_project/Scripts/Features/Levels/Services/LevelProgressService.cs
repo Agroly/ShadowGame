@@ -23,7 +23,7 @@ namespace _project.Scripts.Services.LevelManagement
 
         public void RecordCompletion(string levelId, float time)
         {
-            if (time <= 3) _achievementManager.Unlock("fast");
+            if (time <= 3 && levelId != "1" && levelId != "9") _achievementManager.Unlock("fast");
             if (!_cache.TryGetValue(levelId, out var progress))
             {
                 progress = new LevelProgress { LevelId = levelId };

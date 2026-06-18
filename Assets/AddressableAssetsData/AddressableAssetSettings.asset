@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 8781156a88b8e1446b6ec38ff691bf02
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 8b8b120bff0e75f552be25f9090aec7b
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 1
   m_CatalogRequestsTimeout: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 99bdf09dfd18a564183606a969846579, type: 2}
   - {fileID: 11400000, guid: 614cb7a367724534b885ad7b62d5514e, type: 2}
   - {fileID: 11400000, guid: cf17644dbb537ba4fb5ce43a89ff1eae, type: 2}
   - {fileID: 11400000, guid: 277e2a2f5ce7c264ca3ea9917de9c566, type: 2}
@@ -88,13 +89,13 @@ MonoBehaviour:
       - m_Id: 25013fde24b5490418b0df1950bcc5e5
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 5ed1ddcbc926bb5458d7aa8d2d706c94
-        m_Value: 'ServerData/[BuildTarget]'
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 87cd94bd835ee7044a0536b7cb2ff2ed
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: b0c33642b7fd98746b1023170c3984d2
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: b58eae4432280ab458fa8ab0c19d2b78
-        m_Value: 'https://storage.yandexcloud.net/addressables.anamorphosis/[BuildTarget]'
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
     m_ProfileEntryNames:
     - m_Id: 25013fde24b5490418b0df1950bcc5e5
       m_Name: BuildTarget
