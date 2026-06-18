@@ -24,7 +24,11 @@ namespace _project.Scripts.Services.LevelManagement
             bool isCompleted = progress?.IsCompleted ?? false;
             float time = isCompleted ? progress.BestTime : 0f;
             Sprite sprite = isCompleted ? levelConfig.Sprite : null;
-            bool isAvailable = isCompleted || IsAvailable(levelId, _database.GetLevelsByType(levelConfig.LevelType));
+            #if UNITY_EDITOR
+                bool isAvailable = true;
+            #else
+                bool isAvailable = isCompleted || IsAvailable(levelId, _database.GetLevelsByType(levelConfig.LevelType));
+            #endif
 
             return new LevelView(sprite, levelId, isCompleted, isAvailable, time);
         }

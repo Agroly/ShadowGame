@@ -1,4 +1,5 @@
 ﻿using System;
+using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.Services.GameManagement;
 using _project.Scripts.Services.LevelManagement;
 using _project.Scripts.Services.SceneManagement;
@@ -17,8 +18,11 @@ namespace _project.Scripts.Services.GameFlow
         private const string PuzzleSceneName = "GameplayPuzzle";
         private const string MainMenuSceneName = "MainMenu";
         private const string TutorialSceneName = "TutorialRotation";
+        private const string PuzzleTutorialSceneName = "TutorialPuzzle";
 
         private LevelsDatabase _levelsDatabase;
+        
+        [Inject] private AudioService _audioService;
             
         [Inject]
         public void Construct(SceneLoaderService sceneLoaderService, LoadingScreen loadingScreen,
@@ -46,6 +50,7 @@ namespace _project.Scripts.Services.GameFlow
             using (LifetimeScope.Enqueue(builder =>
                    {
                        builder.RegisterInstance(currentLevelConfig);
+                       _audioService.PlayGameMusic();
                    }))
                 await _sceneLoaderService.LoadAsync(currentLevelConfig.LevelType switch
                 {
@@ -53,6 +58,7 @@ namespace _project.Scripts.Services.GameFlow
                     LevelType.RotationTutorial => TutorialSceneName,
                     LevelType.Rotation => RotationSceneName,
                     LevelType.Puzzle => PuzzleSceneName,
+                    LevelType.PuzzleTutorial => PuzzleTutorialSceneName,
                     _ => throw new ArgumentOutOfRangeException()
                 });
         }

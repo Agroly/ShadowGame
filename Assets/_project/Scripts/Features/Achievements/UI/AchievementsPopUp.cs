@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using _project.Scripts.Achievements;
 using _project.Scripts.Gameplay.Achievements;
 using Cysharp.Threading.Tasks;
@@ -20,6 +21,9 @@ namespace _project.Scripts.UI.Achievements
         [SerializeField] private float _hideDuration = 0.3f;
 
         private AchievementManager _achievementManager;
+        private readonly Queue<AchievementConfig> _queue = new();
+
+        private bool _isShowing;
         private float _hiddenY;
         private float _shownY;
         private CancellationTokenSource _cts;
@@ -35,33 +39,71 @@ namespace _project.Scripts.UI.Achievements
             _hiddenY = _panel.rect.height;
             _shownY = 0f;
             _panel.anchoredPosition = new Vector2(0f, _hiddenY);
+
             _achievementManager.Unlocked += ShowPopUp;
         }
 
         private void OnDestroy()
         {
-            _achievementManager.Unlocked -= ShowPopUp;
+            if (_achievementManager != null)
+                _achievementManager.Unlocked -= ShowPopUp;
+
             _cts?.Cancel();
             _cts?.Dispose();
+
+            _panel.DOKill();
         }
 
         private void ShowPopUp(AchievementConfig config)
         {
-            _cts?.Cancel();
-            _cts?.Dispose();
-            _cts = new CancellationTokenSource();
+            _queue.Enqueue(config);
 
-            ShowAsync(config, _cts.Token).Forget();
+            if (_isShowing)
+                return;
+
+            _cts = new CancellationTokenSource();
+            ProcessQueueAsync(_cts.Token).Forget();
         }
 
-        private async UniTaskVoid ShowAsync(AchievementConfig config, CancellationToken ct)
+        private async UniTaskVoid ProcessQueueAsync(CancellationToken ct)
+        {
+            _isShowing = true;
+
+            try
+            {
+                while (_queue.Count > 0)
+                {
+                    var config = _queue.Dequeue();
+                    await ShowAsync(config, ct);
+                }
+            }
+            finally
+            {
+                _isShowing = false;
+            }
+        }
+
+        private async UniTask ShowAsync(AchievementConfig config, CancellationToken ct)
         {
             _icon.sprite = config.Sprite;
-            _title.text = await config.Title.GetLocalizedStringAsync().ToUniTask(cancellationToken: ct);
+            _title.text = await config.Title.GetLocalizedStringAsync()
+                .ToUniTask(cancellationToken: ct);
 
-            await _panel.DOAnchorPosY(_shownY, _showDuration).SetEase(Ease.OutBack).ToUniTask(cancellationToken: ct);
-            await UniTask.Delay(System.TimeSpan.FromSeconds(_displayDuration), cancellationToken: ct);
-            await _panel.DOAnchorPosY(_hiddenY, _hideDuration).SetEase(Ease.InSine).ToUniTask(cancellationToken: ct);
+            await _panel.DOAnchorPosY(_shownY, _showDuration)
+                .SetEase(Ease.OutBack)
+                .SetUpdate(true)
+                .ToUniTask(cancellationToken: ct);
+
+            await UniTask.Delay(
+                System.TimeSpan.FromSeconds(_displayDuration),
+                ignoreTimeScale: true,
+                cancellationToken: ct
+            );
+
+            await _panel.DOAnchorPosY(_hiddenY, _hideDuration)
+                .SetEase(Ease.InSine)
+                .SetUpdate(true)
+                .ToUniTask(cancellationToken: ct);
         }
     }
 }

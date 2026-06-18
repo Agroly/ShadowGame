@@ -22,6 +22,7 @@ namespace _project.Scripts.Services.Input
         private float _primaryPressTime;
         private bool _holdFired;
         private bool _isPressing;
+        private bool _holdEnabled = true;
 
         public Vector2 PrimaryPosition => _primaryPosition.ReadValue<Vector2>();
         public Vector2 SecondaryPosition => _secondaryPosition.ReadValue<Vector2>();
@@ -79,6 +80,16 @@ namespace _project.Scripts.Services.Input
             _primaryPosition.Enable();
         }
 
+        public void DisableHold()
+        {
+            _holdEnabled = false;
+        }
+
+        public void EnableHold()
+        {
+            _holdEnabled = true;
+        }
+
 
         private void OnPrimaryStarted(InputAction.CallbackContext context)
         {
@@ -101,7 +112,7 @@ namespace _project.Scripts.Services.Input
         {
             if (!_isPressing || _holdFired) return;
 
-            if (Time.time - _primaryPressTime >= HoldThreshold)
+            if (Time.time - _primaryPressTime >= HoldThreshold && _holdEnabled)
             {
                 _holdFired = true;
                 HoldStarted?.Invoke(PrimaryPosition);
@@ -113,7 +124,7 @@ namespace _project.Scripts.Services.Input
             if (!IsPrimaryPressed) return;
             if (IsSecondaryPressed) return;
             
-            if (!_holdFired && Time.time - _primaryPressTime >= HoldThreshold)
+            if (!_holdFired && Time.time - _primaryPressTime >= HoldThreshold && _holdEnabled)
             {
                 _holdFired = true;
                 HoldStarted?.Invoke(PrimaryPosition);

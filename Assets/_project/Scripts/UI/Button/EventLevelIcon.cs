@@ -18,18 +18,5 @@ namespace _project.Scripts.UI.Button
         {
             _button = GetComponent<UIButton>();
         }
-
-        public void Initialize(EventLevelStartupResult result)
-        {
-            if (result.Status != EventLevelStartupStatus.Unavailable)
-            {
-                _icon.sprite = _defaultSprite;
-            }
-            else
-            {
-                _icon.sprite = _disconnectedSprite;
-                _button.interactable = false;
-            }
-        }
     }
 }

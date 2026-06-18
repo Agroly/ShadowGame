@@ -204,8 +204,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1399133542363377562, guid: f943f87b665f04d46bf164c892997900, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6958194401986941391}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7990288904344219760, guid: f943f87b665f04d46bf164c892997900, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7534067586601711629}
   m_SourcePrefab: {fileID: 100100000, guid: f943f87b665f04d46bf164c892997900, type: 3}
+--- !u!1 &553846346438230479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7990288904344219760, guid: f943f87b665f04d46bf164c892997900, type: 3}
+  m_PrefabInstance: {fileID: 7587612360881729983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7534067586601711629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553846346438230479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5749700a18a46b4b60726e97616954a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Gameplay.Achievements.OnLevelEndedAchievement
+  achievementid: RotationAll
 --- !u!4 &8801763989623201317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1399133542363377562, guid: f943f87b665f04d46bf164c892997900, type: 3}

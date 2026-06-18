@@ -634,8 +634,8 @@ MonoBehaviour:
   textUI: {fileID: 5800205883619882308}
   image: {fileID: 7295947095926664481}
   progressImage: {fileID: 4779239645253191776}
-  rotateSprite: {fileID: 21300000, guid: 288720156452cb047a24c5c7f0c3a2bf, type: 3}
-  rotateClockwiseSprite: {fileID: 21300000, guid: 84268ebd4ce1c984bb2ecd705ed4c58b, type: 3}
+  firstSprite: {fileID: 21300000, guid: 288720156452cb047a24c5c7f0c3a2bf, type: 3}
+  secondSprite: {fileID: 21300000, guid: 84268ebd4ce1c984bb2ecd705ed4c58b, type: 3}
   delay: 0.03
   references:
     version: 2

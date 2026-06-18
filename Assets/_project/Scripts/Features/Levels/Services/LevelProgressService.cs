@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _project.Scripts.Achievements;
 using VContainer;
 
 namespace _project.Scripts.Services.LevelManagement
 {
     public class LevelProgressService
     {
+        [Inject] AchievementManager _achievementManager;
         private readonly IProgressStorage _storage;
         private readonly Dictionary<string, LevelProgress> _cache = new();
 
@@ -21,6 +23,7 @@ namespace _project.Scripts.Services.LevelManagement
 
         public void RecordCompletion(string levelId, float time)
         {
+            if (time <= 3) _achievementManager.Unlock("fast");
             if (!_cache.TryGetValue(levelId, out var progress))
             {
                 progress = new LevelProgress { LevelId = levelId };

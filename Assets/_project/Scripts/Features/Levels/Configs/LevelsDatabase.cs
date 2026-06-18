@@ -25,6 +25,7 @@ namespace _project.Scripts.Services.LevelManagement
             LevelType.Rotation => _rotationLevels,
             LevelType.RotationTutorial => _rotationLevels,
             LevelType.Puzzle => _puzzleLevels,
+            LevelType.PuzzleTutorial => _puzzleLevels,
             _ => throw new ArgumentOutOfRangeException(nameof(levelType), levelType, null)
         };
 

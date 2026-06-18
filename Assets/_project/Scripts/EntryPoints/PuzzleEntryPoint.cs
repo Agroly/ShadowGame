@@ -23,7 +23,6 @@ namespace _project.Scripts.Services.Scopes.EntryPoints.Gameplay.Puzzle
         private LoadingScreen _loadingScreen;
         private GameplayInput _input;
         private GameObjectSpawnAnimation _gameObjectSpawnAnimation;
-        private RotationTracker _tracker;
         private GameTimer _gameTimer;
 
         [Inject]

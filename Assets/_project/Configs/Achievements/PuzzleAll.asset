@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: PuzzleAll
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Gameplay.Achievements.AchievementConfig
   _id: PuzzleAll
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 26ebd0b8bc0ffbc4da1be43e72fb684c, type: 3}
   _title:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:1b99c58f0c06feb4391b009425fe490f
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 7268939137757184
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   _description:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:1b99c58f0c06feb4391b009425fe490f
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 7269108981903360
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

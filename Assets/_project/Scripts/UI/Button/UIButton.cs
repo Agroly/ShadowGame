@@ -1,13 +1,16 @@
 ﻿using System.Threading;
+using _project.Scripts.Services.AssetsManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using VContainer;
 
 namespace _project.Scripts.UI.Button
 {
     public class UIButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
+        [Inject] AudioService _audioService;
         [Header("Settings")]
         [SerializeField] public bool interactable = true;
         [SerializeField] private float holdDelay = 0.5f;
@@ -49,6 +52,7 @@ namespace _project.Scripts.UI.Button
             if (!_holdTriggered && !eventData.dragging)
             {
                 onClick?.Invoke();
+                _audioService.PlayClick();
             }
 
             Release();

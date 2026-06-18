@@ -22,6 +22,8 @@ namespace _project.Scripts.Achievements
 
         public void Unlock(string id)
         {
+            Debug.Log($"[AchievementManager] Try unlock: {id}");
+
             if (_saver.IsUnlocked(id)) return;
 
             var config = _database.Get(id);
@@ -30,7 +32,9 @@ namespace _project.Scripts.Achievements
                 Debug.LogError($"[AchievementManager] Achievement not found: {id}");
                 return;
             }
+
             Debug.Log($"[AchievementManager] Unlocked: {id}");
+
             _saver.Unlock(id);
             Unlocked?.Invoke(config);
         }

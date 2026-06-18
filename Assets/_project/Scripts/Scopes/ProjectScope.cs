@@ -38,7 +38,7 @@ namespace _project.Scripts.Services.Scopes
             builder.RegisterComponent(achievementsDatabase).AsSelf();
             builder.Register<AchievementProgressSaver>(Lifetime.Singleton);
             builder.Register<AchievementManager>(Lifetime.Singleton);
-            
+            builder.RegisterComponentInHierarchy<AudioService>();
             builder.RegisterComponentInHierarchy<LoadingScreen>();
             builder.RegisterComponent(levelsDatabase).AsSelf();
             builder.RegisterEntryPoint<ProjectEntryPoint>();

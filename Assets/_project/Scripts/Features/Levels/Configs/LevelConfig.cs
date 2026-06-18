@@ -32,6 +32,7 @@ namespace _project.Scripts.Services.LevelManagement
     {
         Rotation,
         RotationTutorial,
-        Puzzle
+        Puzzle,
+        PuzzleTutorial
     }
 }

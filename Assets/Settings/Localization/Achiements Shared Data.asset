@@ -41,6 +41,38 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 7268939137757184
+    m_Key: AllPuzzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269108981903360
+    m_Key: AllPuzzleDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269713049759744
+    m_Key: RotationAllName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269939701559296
+    m_Key: RotationAllDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7270440476291072
+    m_Key: FastName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7270528078524416
+    m_Key: FastDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7272148908584960
+    m_Key: NoHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7272257750773760
+    m_Key: NoHintDesc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

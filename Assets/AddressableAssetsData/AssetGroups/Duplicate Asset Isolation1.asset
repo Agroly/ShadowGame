@@ -80,11 +80,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d0ee04ccc809bf049a7d271ef5680e30
-    m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/fabric_06_color.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d24b4509bf8d1f3449d7cfebe93171bf
     m_Address: Assets/_project/Visuals/Models/Env/KidsRoom/RedPaint.mat
     m_ReadOnly: 0

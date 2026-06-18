@@ -17,8 +17,6 @@ namespace _project.Scripts.Services.Scopes
         {
             builder.RegisterComponentInHierarchy<WindowsManager>();
             builder.RegisterComponentInHierarchy<LevelIconsFactory>();
-            builder.Register<EventLevelAccessibilityService>(Lifetime.Singleton);
-            builder.Register<EventLevelStartupService>(Lifetime.Singleton);
             builder.Register<Spawner>(Lifetime.Singleton);
             builder.Register<LevelAvailabilityService>(Lifetime.Singleton);
             builder.Register<LevelIconsSelectionManager>(Lifetime.Singleton);

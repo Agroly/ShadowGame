@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using _project.Scripts.Services.AssetsManagement;
 using _project.Scripts.UI;
 using _project.Scripts.UI.LevelIcons;
 using _project.Scripts.UI.WindowControllers;
@@ -9,12 +10,12 @@ using VContainer.Unity;
 
 namespace _project.Scripts.Services.Scopes.EntryPoints
 {
-    public class MainMenuEntryPoint: IAsyncStartable
+    public class MainMenuEntryPoint: IStartable
     {
         private LevelIconsFactory _levelIconsFactory;
         private LoadingScreen _loadingScreen;
         private WindowsManager _windowsManager;
-        
+        [Inject] AudioService _audioService;
         [Inject]
         public void Construct(LevelIconsFactory factory, LoadingScreen loadingScreen, WindowsManager windowsManager)
         {
@@ -22,10 +23,11 @@ namespace _project.Scripts.Services.Scopes.EntryPoints
             _loadingScreen = loadingScreen;
             _windowsManager = windowsManager;
         }
-        public async UniTask StartAsync(CancellationToken token)
+        public void Start()
         {
+            _audioService.PlayMainMenuMusic();
             _levelIconsFactory.SpawnLevelIcons();
-            await _windowsManager.ShowStartWindow();
+            _windowsManager.ShowStartWindow();
             _loadingScreen.Hide();
         }
     }

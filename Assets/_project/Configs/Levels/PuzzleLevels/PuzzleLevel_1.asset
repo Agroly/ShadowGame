@@ -26,4 +26,4 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _sprite: {fileID: 21300000, guid: d8e7823c7b6131f4a8fff2b9feb4dae0, type: 3}
-  _levelType: 2
+  _levelType: 3

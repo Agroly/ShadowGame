@@ -42,6 +42,38 @@ MonoBehaviour:
     m_Localized: Share the result with a friend
     m_Metadata:
       m_Items: []
+  - m_Id: 7268939137757184
+    m_Localized: The end of puzzles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269108981903360
+    m_Localized: Complete all puzzle levels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269713049759744
+    m_Localized: The end of rotation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269939701559296
+    m_Localized: Complete all rotation levels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7270440476291072
+    m_Localized: Speedrunner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7270528078524416
+    m_Localized: Complete the level in under 3 seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7272148908584960
+    m_Localized: Cheater
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7272257750773760
+    m_Localized: Complete the level without using hints
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

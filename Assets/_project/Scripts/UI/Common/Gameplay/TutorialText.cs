@@ -16,8 +16,8 @@ namespace _project.Scripts.UI.Gameplay
         [SerializeField] private Image image;
         [SerializeField] private Image progressImage;
 
-        [SerializeField] private Sprite rotateSprite;
-        [SerializeField] private Sprite rotateClockwiseSprite;
+        [SerializeField] private Sprite firstSprite;
+        [SerializeField] private Sprite secondSprite;
 
         [SerializeField] private float delay = 0.07f;
         
@@ -30,7 +30,7 @@ namespace _project.Scripts.UI.Gameplay
         public async UniTask ShowFirstHint()
         {
             image.gameObject.SetActive(true);
-            image.sprite = rotateSprite;
+            image.sprite = firstSprite;
 
             await UniTask.WhenAll(
                 ShowImage(image),
@@ -40,7 +40,7 @@ namespace _project.Scripts.UI.Gameplay
 
         public async UniTask ShowSecondHint()
         {
-            image.sprite = rotateClockwiseSprite;
+            image.sprite = secondSprite;
             await UniTask.WhenAll(
                 ShowImage(image),
                 PrintLocalized(tutorialStrings[2]));
@@ -49,7 +49,7 @@ namespace _project.Scripts.UI.Gameplay
         public async UniTask ShowThirdHint()
         {
             await image.DOFade(0f,  0.25f);
-            progressImage.gameObject.SetActive(true);
+            if (progressImage!= null) progressImage.gameObject.SetActive(true);
             
             await UniTask.WhenAll(
                 ShowImage(progressImage, 0.3f),
@@ -74,8 +74,14 @@ namespace _project.Scripts.UI.Gameplay
                 await UniTask.WaitForSeconds(delay);
             }
         }
+
+        public async UniTask HideAll()
+        {
+            await textUI.DOFade(0f, 0.25f);
+        }
         private async UniTask ShowImage(Image img, float targetalpha = 1f, float duration = 0.25f)
         {
+            if (img == null) return;
             img.color = new Color(img.color.r, img.color.g, img.color.b, 0f);
             await img.DOFade(targetalpha, duration).SetEase(Ease.InCubic).ToUniTask();
         }

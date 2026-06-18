@@ -16,7 +16,13 @@ namespace _project.Scripts.Gameplay.Achievements
             Load();
         }
 
-        public bool IsUnlocked(string id) => _unlocked.Contains(id);
+        public bool IsUnlocked(string id)
+        {  
+            #if UNITY_EDITOR
+            return false;
+            #endif
+            return _unlocked.Contains(id);
+        }
 
         public void Unlock(string id)
         {
@@ -28,10 +34,6 @@ namespace _project.Scripts.Gameplay.Achievements
         {
             try
             {
-#if UNITY_EDITOR
-                _unlocked = new HashSet<string>();
-                return;
-#endif
                 if (!File.Exists(_filePath))
                 {
                     _unlocked = new HashSet<string>();

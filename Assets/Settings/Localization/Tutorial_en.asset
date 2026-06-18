@@ -38,6 +38,23 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 9610714770780160
+    m_Localized: The goal of the game is to arrange the puzzle pieces to create the
+      required silhouette.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9611073610264576
+    m_Localized: Tap a puzzle piece to rotate it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9611178736300032
+    m_Localized: To swap puzzle pieces, hold one piece, then tap another.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9611320101122048
+    m_Localized: Arrange the pieces to form the visible silhouette.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

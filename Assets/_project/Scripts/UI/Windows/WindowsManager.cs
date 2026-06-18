@@ -17,14 +17,10 @@ namespace _project.Scripts.UI.Windows
 {
     public class WindowsManager : MonoBehaviour
     {
-        [Inject] private EventLevelStartupService _eventLevelStartupService;
         [Inject] private Spawner _spawner;
         
         [SerializeField] private UIWindow levelWindow;
         [SerializeField] private UIWindow mainMenuWindow;
-        [SerializeField] private UIWindow eventLevelWindow;
-        [SerializeField] private AssetReference eventLevelConfigReference;
-        [SerializeField] private EventLevelIcon eventLevelIcon;
         
         private UIInput _input;
         private MainMenuContext _context;
@@ -40,11 +36,8 @@ namespace _project.Scripts.UI.Windows
             _context =  context;
         }
         
-        public async UniTask ShowStartWindow()
+        public void ShowStartWindow()
         {
-            var result = await _eventLevelStartupService.Check(eventLevelConfigReference, eventLevelWindow.transform);
-            eventLevelIcon.Initialize(result);
-            
             if (_context.FromGame)
             {
                 _currentWindow = levelWindow;
@@ -53,17 +46,8 @@ namespace _project.Scripts.UI.Windows
             }
             else
             {
-                if (result.Status == EventLevelStartupStatus.Uncompleted)
-                {
-                    _currentWindow = eventLevelWindow;
-                    mainMenuWindow.InstantHide();
-                    eventLevelWindow.InstantShow();
-                }
-                else
-                {
                     _currentWindow = mainMenuWindow;
                     mainMenuWindow.InstantShow();
-                }
             }
 
             _input.backAction.performed += OnBackPerformed;

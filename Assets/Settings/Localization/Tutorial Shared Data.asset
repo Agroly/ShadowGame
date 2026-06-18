@@ -31,6 +31,22 @@ MonoBehaviour:
     m_Key: Rotate to targer
     m_Metadata:
       m_Items: []
+  - m_Id: 9610714770780160
+    m_Key: Puzzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9611073610264576
+    m_Key: tap puzzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9611178736300032
+    m_Key: hold and swap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9611320101122048
+    m_Key: puzzleresults
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
