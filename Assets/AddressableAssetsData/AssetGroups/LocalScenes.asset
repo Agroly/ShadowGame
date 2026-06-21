@@ -25,8 +25,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 87ee330fb2bc38643b9529e166030ef9
-    m_Address: Assets/_project/Configs/Levels/EventLevel/MerryChristmas/Env_MC.unity
+  - m_GUID: 475ca29133034924d84d23f417a18c61
+    m_Address: EnvSummer
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

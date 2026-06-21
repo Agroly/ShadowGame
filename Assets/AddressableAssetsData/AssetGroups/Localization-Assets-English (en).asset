@@ -15,8 +15,8 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-English (en)
   m_GUID: efd85abc543f91c4ea9596965ef8c729
   m_SerializeEntries:
-  - m_GUID: 57f8d9e0259427c4992fc8c6435a9a84
-    m_Address: Assets/_project/Configs/Levels/EventLevel/Sprites/Happy New year.png
+  - m_GUID: 3af03d389b29eae4196d51040a6f543b
+    m_Address: HelloSummerExport
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

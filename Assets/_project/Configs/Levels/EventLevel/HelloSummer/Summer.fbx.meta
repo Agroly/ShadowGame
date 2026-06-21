@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fece7f684d795944c87e8534c4871cba
+guid: 7f9afcbbdb4b292429aa32a7f0c596fb
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Scratched Rusted Painted Metal Edge Wear
-    second: {fileID: 2100000, guid: 2a396d4ef847f5a4e92410395f8521ea, type: 2}
+      name: Metal Rusted Engineer Edgewear
+    second: {fileID: 2100000, guid: c44e307b5deff0f4ba85eccb3c71f331, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

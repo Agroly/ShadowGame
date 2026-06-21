@@ -50,6 +50,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a4b5f02c3e7fa748bbed4f1ecedcbd3
+    m_Address: PuzzleGOSummer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74cc784a874c4f24cb278098f5ea3928
     m_Address: RO_GO_8
     m_ReadOnly: 0

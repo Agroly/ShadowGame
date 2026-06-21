@@ -46,7 +46,7 @@ namespace _project.Scripts.UI.Button
 
         private void OnGameEnded(float _)
         {
-            if (!_used && _config.LevelId == "14") ;
+            if (!_used && _config.LevelId == "14")
             {
                 _achievementManager.Unlock("NoHint");
             }

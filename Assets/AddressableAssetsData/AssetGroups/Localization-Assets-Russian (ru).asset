@@ -15,9 +15,9 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Russian (ru)
   m_GUID: 17250dcd3e02bf642ac52585b3219ca3
   m_SerializeEntries:
-  - m_GUID: 1be53523cb62f3745a427fa39be7d6e1
-    m_Address: "Assets/_project/Configs/Levels/EventLevel/Sprites/\u0421 \u043D\u043E\u0432\u044B\u043C
-      \u0433\u043E\u0434\u043E\u043C.png"
+  - m_GUID: b66b621b18cbe684184314111af1b426
+    m_Address: "\u0421 \u043F\u0435\u0440\u0432\u044B\u043C \u0434\u043D\u0435\u043C
+      \u043B\u0435\u0442\u0430Export"
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru

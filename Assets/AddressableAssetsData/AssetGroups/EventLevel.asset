@@ -30,11 +30,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 599f7bac039e19a4f820a1df3259c20b
-    m_Address: Assets/_project/Configs/Levels/EventLevel/MerryChristmas/MCPuzzle.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: be2e08bda3cc81a44afbd60680a11854
     m_Address: Assets/_project/Configs/Levels/EventLevel/EventLevelConfig.prefab
     m_ReadOnly: 0
