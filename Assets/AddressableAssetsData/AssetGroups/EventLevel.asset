@@ -15,11 +15,6 @@ MonoBehaviour:
   m_GroupName: EventLevel
   m_GUID: 1a12f29668a780c40b513a493f9faf6e
   m_SerializeEntries:
-  - m_GUID: 2ca5a00e35fd7594ea132ed818faa2e4
-    m_Address: Assets/_project/Configs/Levels/EventLevel/Env_NewYear.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3307408575c533e4ea6898684a6784b9
     m_Address: Assets/_project/Configs/Levels/EventLevel/Event.asset
     m_ReadOnly: 0

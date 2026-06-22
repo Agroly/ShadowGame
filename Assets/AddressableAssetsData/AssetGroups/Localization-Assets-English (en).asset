@@ -15,8 +15,8 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-English (en)
   m_GUID: efd85abc543f91c4ea9596965ef8c729
   m_SerializeEntries:
-  - m_GUID: 3af03d389b29eae4196d51040a6f543b
-    m_Address: HelloSummerExport
+  - m_GUID: eec18a6bb74bd094da704d212160997d
+    m_Address: MerryChristmasExport
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
